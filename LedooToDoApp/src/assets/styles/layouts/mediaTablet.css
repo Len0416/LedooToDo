@@ -1,0 +1,57 @@
+/* 📲 Tablet portrait (431–834px) */
+@media screen and (min-width: 431px) and (max-width: 835px) {
+    #app {
+        display: grid;
+        grid-template-columns: 100vw;
+        grid-template-rows: 10% 0% 90%;
+        width: 100vw;
+        overflow-x: hidden;
+    }
+
+    .task-form {
+        width: 80vw;
+        position: fixed;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr auto;
+        padding: 12px;
+    }
+
+    .task-form input[type="text"],
+    .task-form input[type="datetime-local"] {
+        width: 100%;
+        font-size: 0.85rem;
+    }
+
+    .task-form button {
+        width: 100%;
+        font-size: 0.85rem;
+        padding: 10px;
+    }
+
+    .task-form label.task-important {
+        font-size: 0.8rem;
+    }
+
+    .wallpaper-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .wallpaper-card img {
+        height: 80px;
+    }
+
+    .context-panel.open {
+        transform: translateY(0);
+        opacity: 1;
+        overflow-y: auto;
+    }
+
+
+    .sidebar {
+        overflow: hidden;
+    }
+}

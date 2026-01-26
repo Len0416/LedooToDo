@@ -1,0 +1,17 @@
+/* 🖥️ Monitores grandes (≥1920px) */
+@media screen and (min-width: 1920px) {
+    .task {
+        font-size: 1.1rem;
+        padding: 16px;
+    }
+
+    .wallpaper-card img {
+        height: 120px;
+    }
+    }
+
+    @media screen and (min-width: 2560px) {
+    .task {
+        font-size: 1.2rem;
+    }
+}
