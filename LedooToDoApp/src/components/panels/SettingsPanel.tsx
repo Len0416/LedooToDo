@@ -1,10 +1,27 @@
+import fondo1 from "../../assets/images/themes/Fondo1.png";
+import fondo2 from "../../assets/images/themes/Fondo2.png";
+import fondo3 from "../../assets/images/themes/Fondo3.png";
+import fondo4 from "../../assets/images/themes/Fondo4.png";
+import fondo5 from "../../assets/images/themes/Fondo5.png";
+import fondo6 from "../../assets/images/themes/Fondo6.png";
+
 type SettingsPanelProps = {
     isOpen: boolean;
     onClose: () => void;
+    onToggleTheme: () => void;
+    onChangeWallpaper: (newWallpaper: string) => void;
 };
 
-const SettingsPanel: React.FC<SettingsPanelProps> = ({ isOpen, onClose }) => {
-    if (!isOpen) return null; // Si no está abierto, no se renderiza
+const SettingsPanel: React.FC<SettingsPanelProps> = ({
+    isOpen,
+    onClose,
+    onToggleTheme,
+    onChangeWallpaper,
+    }) => {
+    if (!isOpen) return null;
+
+    const fondos = [fondo1, fondo2, fondo3, fondo4, fondo5, fondo6];
+
     return (
         <aside className="settings-panel">
         <div className="settings-header">
@@ -12,17 +29,21 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({ isOpen, onClose }) => {
             <button className="btn-icon close-settings" onClick={onClose}>✖</button>
         </div>
         <div className="section-actions">
-            <button className="btn-outline">Claro</button>
-            <button className="btn-outline is-active">Oscuro</button>
+            <button className="btn-outline" onClick={onToggleTheme}>Claro/Oscuro</button>
         </div>
         <div className="wallpaper-grid">
-            {/* Aquí podrías mapear dinámicamente tus fondos */}
-            <button className="wallpaper-card"><img src="   " alt="Montaña" /></button>
+            {fondos.map((fondo, index) => (
+            <button
+                key={index}
+                className="wallpaper-card"
+                onClick={() => onChangeWallpaper(fondo)}
+            >
+                <img src={fondo} alt={`Fondo${index + 1}`} />
+            </button>
+            ))}
         </div>
         </aside>
     );
 };
 
-
 export default SettingsPanel;
-

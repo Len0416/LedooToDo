@@ -13,15 +13,19 @@ import TaskList from "../components/TaskList";
 import PanelPerfil from "../components/panels/PanelPerfil"; 
 import PanelSecciones from "../components/panels/PanelSecciones"; 
 import SettingsPanel from "../components/panels/SettingsPanel";
-import { useSettingsPanel } from "../hooks/useSettingsPanel";
+
+import { useSettingsPanel, useTheme, useWallpaper } from "../hooks/useSettingsPanel";
 
 const Index: React.FC = () => {
     const { isOpen, openPanel, closePanel } = useSettingsPanel();
 
+    const { theme, toggleTheme } = useTheme();
+    const { wallpaper, changeWallpaper } = useWallpaper();
+
     return (
-        <div id="app" className="theme-dark">
+        <div id="app" className={`theme-${theme}`} style={{ backgroundImage: `url('${wallpaper}')`, backgroundRepeat: "noRepeat", backgroundPosition: "center", backgroundSize: "cover" }}>
         <Topbar onOpenSettings={openPanel}/>
-        <SettingsPanel isOpen={isOpen} onClose={closePanel} />
+        <SettingsPanel isOpen={isOpen} onClose={closePanel} onToggleTheme={toggleTheme} onChangeWallpaper={changeWallpaper} />
 
         {/* Paneles controlados por estado local */}
         <PanelPerfil isOpen={false} onClose={() => {}} />
