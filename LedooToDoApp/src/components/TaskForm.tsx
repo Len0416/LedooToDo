@@ -1,7 +1,7 @@
 import "../assets/styles/components/tasks.css";
 import { useState } from "react";
 
-const TaskForm: React.FC = () => {
+const TaskForm: React.FC = () => {  
     const [task, setTask] = useState("");
 
     const handleSubmit = (e: React.FormEvent) => {

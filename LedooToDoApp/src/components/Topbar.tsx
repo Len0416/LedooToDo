@@ -16,16 +16,21 @@ const optionsNav: NavOption[] = [
 ];
 
 // Componente funcional Topbar
-const Topbar: React.FC = () => {
+type TopbarProps = {
+    onOpenSettings: () => void;
+};
+
+const Topbar: React.FC<TopbarProps> = ({ onOpenSettings }) => {
     return (
         <header className="topbar">
         <span className="logo">Ledoo</span>
         <nav className="optionsNav">
             {optionsNav.map((option) => (
             <button
-                key={option.panel} // clave única para React
+                key={option.panel}
                 className={`optionItem ${option.isSetting ? "setting" : ""}`}
                 data-panel={option.panel}
+                onClick={option.isSetting ? onOpenSettings : undefined}
             >
                 {option.label}
             </button>
@@ -34,5 +39,7 @@ const Topbar: React.FC = () => {
         </header>
     );
 };
+
+
 
 export default Topbar;
