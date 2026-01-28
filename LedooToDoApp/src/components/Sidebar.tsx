@@ -1,10 +1,20 @@
 import "../assets/styles/components/sidebar.css";
 
+import iconSection1 from "../assets/images/icons/Sun.png";
+import iconSection2 from "../assets/images/icons/Star.png";
+import iconSection3 from "../assets/images/icons/CheckSquare.png";
+import iconSection4 from "../assets/images/icons/Calendar.png";
+import userIcon from "../assets/images/icons/User.png";
+
 const Sidebar: React.FC = () => {
+    const icons = [iconSection1, iconSection2, iconSection3, iconSection4];
+    const titles = ["Hoy", "Destacados", "Tareas", "Calendario"];
+    const listItems = ["Trabajo", "Personal", "Estudio"];
+
     return (
         <aside className="sidebar" aria-label="Barra lateral">
         <div className="user-card">
-            <img src="../assets/images/icons/User.png" alt="Icono de perfil" />
+            <img src={userIcon} alt="Icono de perfil" />
             <div className="user-info">
             <div className="user-name">Nombre de usuario</div>
             <div className="user-email">correousuario@gmail.com</div>
@@ -14,36 +24,36 @@ const Sidebar: React.FC = () => {
         <div className="divider" role="separator"></div>
 
         <nav className="nav-sections">
-            <button className="nav-item is-active">
-            <img src="../assets/images/icons/Sun.png" alt="Hoy" />
-            <span>Hoy</span>
-            </button>
-            <button className="nav-item">
-            <img src="../assets/images/icons/Star.png" alt="Importante" />
-            <span>Importante</span>
-            </button>
-            <button className="nav-item">
-            <img src="../assets/images/icons/CheckSquare.png" alt="Tareas" />
-            <span>Tareas</span>
-            </button>
-            <button className="nav-item">
-            <img src="../assets/images/icons/Calendar.png" alt="Planificado" />
-            <span>Planificado</span>
-            </button>
+            {icons.map((icon, index) => (
+                <button
+                    key={index}
+                    className="nav-item"
+                >
+                <img src={icon} alt="Hoy" />
+                <p>{titles[index]}</p>
+                </button>
+            ))}
         </nav>
 
         <div className="divider" role="separator"></div>
 
         <div className="lists">
             <div className="lists-header">
-            <span>Mis listas</span>
+            <h3>Mis listas</h3>
             </div>
             <ul className="list-group">
-            <li><button className="list-item">Trabajo</button></li>
-            <li><button className="list-item">Personal</button></li>
-            <li><button className="list-item">Estudio</button></li>
+            {listItems.map((item, index) => (
+                <li key={index} className="list-item">
+                {item}
+                </li>
+            ))}
             <button className="btn-outline create-list">Crear lista</button>
             </ul>
+        </div>
+        <div className="divider" role="separator"></div>
+        <div className="notes">
+            <h3>Notas</h3>
+            <button className="btn-outline">Tablero de notas</button>
         </div>
         </aside>
     );

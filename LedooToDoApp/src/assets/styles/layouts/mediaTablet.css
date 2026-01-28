@@ -44,14 +44,28 @@
         height: 80px;
     }
 
-    .context-panel.open {
-        transform: translateY(0);
-        opacity: 1;
-        overflow-y: auto;
+    /* Estado inicial de los paneles en tablet */
+    .context-panel {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 100vw; /* en tablet ocupa menos ancho */
+        height: 100vh;
+        background: var(--surface);
+        transform: translateX(100%);
+        opacity: 0;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        z-index: 10;
     }
 
+    /* Estado abierto */
+    .context-panel.open {
+        transform: translateX(0);
+        opacity: 1;
+    }
 
     .sidebar {
         overflow: hidden;
+        padding: 0px;
     }
 }

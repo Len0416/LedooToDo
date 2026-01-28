@@ -37,7 +37,7 @@
     .sidebar {
         min-width: 100vw;
         display: grid;
-        padding: 12px;
+        padding: 0px;
         justify-content: center;
         overflow: hidden;
     }
@@ -201,17 +201,24 @@
         transform: scale(1.05);
         border-color: var(--primary);
     }
-
+        /* Estado inicial de los paneles en móvil */
     .context-panel {
-        top: 56px;
-        font-size: 0.85rem;
-        height: 35vh;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 100vw;
+        height: 100vh;
+        background: var(--surface);
+        transform: translateX(100%); /* oculto fuera de la pantalla */
+        opacity: 0;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        z-index: 10; /* encima del contenido */
     }
 
+    /* Estado abierto */
     .context-panel.open {
-        transform: translateY(0);
+        transform: translateX(0);
         opacity: 1;
-        overflow-y: auto;
     }
 
     .panel-body {

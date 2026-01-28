@@ -4,7 +4,9 @@ import fondo3 from "../../assets/images/themes/Fondo3.png";
 import fondo4 from "../../assets/images/themes/Fondo4.png";
 import fondo5 from "../../assets/images/themes/Fondo5.png";
 import fondo6 from "../../assets/images/themes/Fondo6.png";
-
+import fondo7 from "../../assets/images/themes/Fondo7.png";
+import fondo8 from "../../assets/images/themes/Fondo8.png";
+import fondo9 from "../../assets/images/themes/Fondo9.png";
 type SettingsPanelProps = {
     isOpen: boolean;
     onClose: () => void;
@@ -20,7 +22,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
     }) => {
     if (!isOpen) return null;
 
-    const fondos = [fondo1, fondo2, fondo3, fondo4, fondo5, fondo6];
+    const fondos = [fondo1, fondo2, fondo3, fondo4, fondo5, fondo6, fondo7, fondo8, fondo9];
 
     return (
         <aside className="settings-panel">

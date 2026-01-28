@@ -1,9 +1,6 @@
 import "../assets/styles/components/main.css";
-
 import "../assets/styles/components/panels.css";
 import "../assets/styles/components/settings.css";
-import "../assets/styles/components/panels.css";
-
 import "../assets/styles/global.css";
 
 import Topbar from "../components/Topbar";
@@ -14,24 +11,48 @@ import PanelPerfil from "../components/panels/PanelPerfil";
 import PanelSecciones from "../components/panels/PanelSecciones"; 
 import SettingsPanel from "../components/panels/SettingsPanel";
 
-import { useSettingsPanel, useTheme, useWallpaper } from "../hooks/useSettingsPanel";
+import { usePanelManager } from "../hooks/usePanelManager";
+import PanelListas from "../components/panels/PanelListas";
 
 const Index: React.FC = () => {
-    const { isOpen, openPanel, closePanel } = useSettingsPanel();
-
-    const { theme, toggleTheme } = useTheme();
-    const { wallpaper, changeWallpaper } = useWallpaper();
+    const {
+        openPanel,
+        open,
+        close,
+        theme,
+        toggleTheme,
+        wallpaper,
+        changeWallpaper,
+    } = usePanelManager();
 
     return (
-        <div id="app" className={`theme-${theme}`} style={{ backgroundImage: `url('${wallpaper}')`, backgroundRepeat: "noRepeat", backgroundPosition: "center", backgroundSize: "cover" }}>
-        <Topbar onOpenSettings={openPanel}/>
-        <SettingsPanel isOpen={isOpen} onClose={closePanel} onToggleTheme={toggleTheme} onChangeWallpaper={changeWallpaper} />
+        <div
+        id="app"
+        className={`theme-${theme}`}
+        style={{
+            backgroundImage: `url('${wallpaper}')`,
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+        }}
+        >
+        <Topbar
+            onOpenSettings={() => open("ajustes")}
+            onOpenAccount={() => open("perfil")}
+            onOpenSections={() => open("secciones")}
+            onOpenLists={() => open("listas")}
+        />
 
-        {/* Paneles controlados por estado local */}
-        <PanelPerfil isOpen={false} onClose={() => {}} />
-        <PanelSecciones isOpen={false} onClose={() => {}} />
+        <SettingsPanel
+            isOpen={openPanel === "ajustes"}
+            onClose={close}
+            onToggleTheme={toggleTheme}
+            onChangeWallpaper={changeWallpaper}
+        />
 
-        {/* Panel de ajustes controlado por el hook */}
+        <PanelPerfil isOpen={openPanel === "perfil"} onClose={close} />
+        <PanelSecciones isOpen={openPanel === "secciones"} onClose={close} />
+        <PanelListas isOpen={openPanel === "listas"} onClose={close} />
 
         <Sidebar />
         <main className="main">
@@ -52,6 +73,5 @@ const Index: React.FC = () => {
         </div>
     );
 };
-
 
 export default Index;

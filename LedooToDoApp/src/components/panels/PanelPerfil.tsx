@@ -4,19 +4,17 @@ type PanelPerfilProps = {
 };
 
 const PanelPerfil: React.FC<PanelPerfilProps> = ({ isOpen, onClose }) => {
-    if (!isOpen) return null; // Si no está abierto, no se renderiza
-
     return (
-        <aside className="context-panel" id="panel-perfil">
+        <aside className={`context-panel ${isOpen ? "open" : ""}`} id="panel-perfil">
         <div className="panel-header">
             <h3>Perfil</h3>
             <div className="panel-options">
             <button className="btn-outline">Cerrar sesión</button>
-            <button className="btn-icon close-panel" onClick={onClose}>✖</button>
+            <button className="btn-icon close-panel" aria-label="Cerrar" onClick={onClose}>✖</button>
             </div>
         </div>
         <div className="panel-body">
-            <img src="../assets/images/icons/User.png" alt="Perfil" />
+            <img src="../src/assets/images/icons/User.png" alt="Icono de perfil de usuario" />
             <div className="panel-content">
             <p>Nombre de usuario</p>
             <p>correousuario@gmail.com</p>
