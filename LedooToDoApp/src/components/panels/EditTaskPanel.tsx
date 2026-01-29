@@ -1,15 +1,14 @@
-// src/components/panels/PanelEditarTarea.tsx
 import { useTaskStore } from "../../store/useTaskStore";
 
-type PanelEditarTareaProps = {
+type EditTaskPanelProps = {
     isOpen: boolean;
     onClose: () => void;
-    };
+};
 
-    const PanelEditarTarea: React.FC<PanelEditarTareaProps> = ({ isOpen, onClose }) => {
+const EditTaskPanel: React.FC<EditTaskPanelProps> = ({ isOpen, onClose }) => {
     const { editingTask, updateTask, cancelEditing } = useTaskStore();
 
-    if (!isOpen || !editingTask) return null;
+    if (!editingTask) return null;
 
     const handleSave = () => {
         updateTask(editingTask);
@@ -17,34 +16,42 @@ type PanelEditarTareaProps = {
     };
 
     return (
-        <div className="panel editarTarea">
-        <h2>Editar tarea</h2>
-        <input
+        <aside className={`context-panel ${isOpen ? "open" : ""}`}>
+        <div className="panel-body">
+            <h2>Editar tarea</h2>
+            <button className="btn-icon close-panel" aria-label="Cerrar" onClick={onClose}>✖</button>
+            <input
             type="text"
             value={editingTask.title}
             onChange={(e) => updateTask({ ...editingTask, title: e.target.value })}
-        />
-        <input
+            />
+            <input
             type="datetime-local"
             value={editingTask.date || ""}
             onChange={(e) => updateTask({ ...editingTask, date: e.target.value })}
-        />
-        <label>
+            />
+            <label>
             <input
-            type="checkbox"
-            checked={editingTask.important || false}
-            onChange={(e) => updateTask({ ...editingTask, important: e.target.checked })}
+                type="checkbox"
+                checked={editingTask.important || false}
+                onChange={(e) => updateTask({ ...editingTask, important: e.target.checked })}
             />
             Importante
-        </label>
-        <button onClick={handleSave}>Guardar</button>
-        <button
-            onClick={() => {
-            cancelEditing();
-            onClose();
-            }}>Cancelar</button>
+            </label>
+            <div className="panel-actions">
+            <button onClick={handleSave}>Guardar</button>
+            <button
+                onClick={() => {
+                cancelEditing();
+                onClose();
+                }}
+            >
+                Cancelar
+            </button>
+            </div>
         </div>
+        </aside>
     );
 };
 
-export default PanelEditarTarea;
+export default EditTaskPanel;

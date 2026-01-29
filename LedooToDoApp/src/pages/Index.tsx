@@ -15,18 +15,13 @@ import PanelListas from "../components/panels/PanelListas";
 import EditTaskPanel from "../components/panels/EditTaskPanel";
 
 import { usePanelManager } from "../hooks/usePanelManager";
+
 import { useSettingsStore } from "../store/useSettingsStore";
 
-    const Index: React.FC = () => {
-    const {
-        openPanel,
-        open,
-        close,
-        toggleTheme,
-        changeWallpaper,
-    } = usePanelManager();
-
-    const { theme, wallpaper } = useSettingsStore();
+const Index: React.FC = () => {
+    const { openPanel, open, close } = usePanelManager();
+    const { theme, wallpaper, setWallpaper, setTheme } = useSettingsStore();
+    console.log("Index openPanel:", openPanel);
 
     return (
         <div
@@ -50,8 +45,8 @@ import { useSettingsStore } from "../store/useSettingsStore";
         <SettingsPanel
             isOpen={openPanel === "ajustes"}
             onClose={close}
-            onToggleTheme={toggleTheme}
-            onChangeWallpaper={changeWallpaper}
+            onToggleTheme={() => setTheme(theme === "light" ? "dark" : "light")}
+            onChangeWallpaper={setWallpaper}
         />
 
         <PanelPerfil isOpen={openPanel === "perfil"} onClose={close} />
@@ -71,7 +66,7 @@ import { useSettingsStore } from "../store/useSettingsStore";
                 </label>
                 </div>
             </header>
-            <TaskList />
+            <TaskList onOpenPanel={open} />
             </div>
             <TaskForm />
         </main>
