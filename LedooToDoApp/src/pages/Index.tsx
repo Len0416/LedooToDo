@@ -7,23 +7,26 @@ import Topbar from "../components/Topbar";
 import Sidebar from "../components/Sidebar";
 import TaskForm from "../components/TaskForm";
 import TaskList from "../components/TaskList";
+
 import PanelPerfil from "../components/panels/PanelPerfil"; 
 import PanelSecciones from "../components/panels/PanelSecciones"; 
 import SettingsPanel from "../components/panels/SettingsPanel";
+import PanelListas from "../components/panels/PanelListas";
+import EditTaskPanel from "../components/panels/EditTaskPanel";
 
 import { usePanelManager } from "../hooks/usePanelManager";
-import PanelListas from "../components/panels/PanelListas";
+import { useSettingsStore } from "../store/useSettingsStore";
 
-const Index: React.FC = () => {
+    const Index: React.FC = () => {
     const {
         openPanel,
         open,
         close,
-        theme,
         toggleTheme,
-        wallpaper,
         changeWallpaper,
     } = usePanelManager();
+
+    const { theme, wallpaper } = useSettingsStore();
 
     return (
         <div
@@ -34,6 +37,7 @@ const Index: React.FC = () => {
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
             backgroundSize: "cover",
+            opacity: wallpaper ? 1 : 0.9,
         }}
         >
         <Topbar
@@ -53,6 +57,7 @@ const Index: React.FC = () => {
         <PanelPerfil isOpen={openPanel === "perfil"} onClose={close} />
         <PanelSecciones isOpen={openPanel === "secciones"} onClose={close} />
         <PanelListas isOpen={openPanel === "listas"} onClose={close} />
+        <EditTaskPanel isOpen={openPanel === "editarTarea"} onClose={close} />
 
         <Sidebar />
         <main className="main">

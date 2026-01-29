@@ -1,15 +1,32 @@
-import "../assets/styles/components/tasks.css";
 import { useState } from "react";
+import type { Task } from "../types/Task";
+import { useTaskStore } from "../store/useTaskStore";
+import "../assets/styles/components/tasks.css";
 
-const TaskForm: React.FC = () => {  
-    const [task, setTask] = useState("");
+const TaskForm: React.FC = () => {
+    const { addTask } = useTaskStore();
+    const [title, setTitle] = useState("");
+    const [date, setDate] = useState<string | undefined>(undefined);
+    const [important, setImportant] = useState(false);
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        if (task.trim()) {
-        console.log("Nueva tarea:", task);
-        setTask("");
-        }
+        if (!title.trim()) return;
+
+        const task: Task = {
+        id: crypto.randomUUID(),
+        title,
+        date,
+        important,
+        completed: false, // siempre nueva tarea pendiente
+        };
+
+        addTask(task);
+
+        // limpiar formulario
+        setTitle("");
+        setDate(undefined);
+        setImportant(false);
     };
 
     return (
@@ -18,13 +35,23 @@ const TaskForm: React.FC = () => {
             type="text"
             className="task-input"
             placeholder="Nueva tarea…"
-            value={task}
-            onChange={(e) => setTask(e.target.value)}
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
             required
         />
-        <input type="datetime-local" className="task-date" />
+        <input
+            type="datetime-local"
+            className="task-date"
+            value={date || ""}
+            onChange={(e) => setDate(e.target.value)}
+        />
         <label className="task-important">
-            <input type="checkbox" /> Importante
+            <input
+            type="checkbox"
+            checked={important}
+            onChange={(e) => setImportant(e.target.checked)}
+            />{" "}
+            Importante
         </label>
         <button type="submit">Agregar</button>
         </form>

@@ -1,10 +1,23 @@
+import TaskItem from "./TaskItem";
+import { useTaskStore } from "../store/useTaskStore";
+import "../assets/styles/components/tasks.css";
+
 const TaskList: React.FC = () => {
+    const { tasks } = useTaskStore();
     return (
-        <section className="tasks" aria-label="Lista de tareas">
-        {/* Aquí se renderizan las tareas dinámicas */}
-        <p>No hay tareas aún</p>
-        </section>
+        <div className="task-list">
+        {tasks.length === 0 ? (
+            <p>No hay tareas pendientes</p>
+        ) : (
+            tasks.map((task, index) => (
+            <TaskItem
+                key={index}
+                task={task}
+            />
+            ))
+        )}
+        </div>
     );
-};
+    };
 
 export default TaskList;
