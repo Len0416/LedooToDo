@@ -57,11 +57,10 @@
 
 .btn-outline {
     width: max-content;
-    height: 40px;
     background: transparent;
     border: 1px solid var(--border);
     color: var(--text);
-    padding: 8px 12px;
+    padding: 4px 6px;
 }
 
 .btn-outline.is-active { border-color: var(--primary); color: var(--primary) }

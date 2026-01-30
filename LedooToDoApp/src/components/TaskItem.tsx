@@ -1,38 +1,85 @@
 import type { Task } from "../types/Task";
 import { useTaskStore } from "../store/useTaskStore";
 import "../assets/styles/components/tasks.css";
+import "../assets/styles/components/main.css";
+import { useState } from "react";
 
 type TaskItemProps = {
     task: Task;
     onOpenPanel: (panel: string) => void;
-    };
+    onClose: () => void;
+};
 
-    const TaskItem: React.FC<TaskItemProps> = ({ task, onOpenPanel }) => {
-    const { deleteTask, toggleCompleted, startEditing } = useTaskStore();
+const TaskItem: React.FC<TaskItemProps> = ({ task, onOpenPanel }) => {
+    const { deleteTask, toggleCompleted, startEditing, cancelEditing, toggleImportant } = useTaskStore();
+
+    const [isInlineEditing, setIsInlineEditing] = useState(false);
 
     return (
-        <div className={`task ${task.completed ? "completed" : ""}`}>
-        <span className="task-title">{task.title}</span>
-        {task.date && <span>{task.date}</span>}
-        <div className="task-actions">
+        <div
+        className={`task 
+            ${task.completed ? "completed" : ""} 
+            ${task.important ? "important" : ""}`}
+        >
+        {isInlineEditing ? (
+            // 🔹 MODO EDICIÓN INLINE
+            <div className="inline-edit">
             <input
-            type="checkbox"
-            checked={task.completed}
-            onChange={() => toggleCompleted(task.id)}
+                type="text"
+                defaultValue={task.title}
+                onBlur={() => setIsInlineEditing(false)}
             />
+            <input
+                type="datetime-local"
+                defaultValue={task.date || ""}
+                onBlur={() => setIsInlineEditing(false)}
+            />
+            <button onClick={() => setIsInlineEditing(false)}>Guardar</button>
             <button
-            className="edit-btn"
-            onClick={() => {
-                startEditing(task);          // guarda la tarea en el store
-                onOpenPanel("editarTarea");  // abre el panel global
-            }}
+                onClick={() => {
+                cancelEditing();
+                setIsInlineEditing(false);
+                }}>Cancelar</button>
+            </div>
+        ) : (
+            // 🔹 MODO NORMAL
+            <>
+            <span
+                className="task-title"
+                onClick={() => setIsInlineEditing(true)}
             >
-            Editar
-            </button>
-            <button className="cancel-btn" onClick={() => deleteTask(task.id)}>
-            Eliminar
-            </button>
-        </div>
+                {task.title} {task.completed ? "(Completada)" : ""}
+            </span>
+
+            {task.date && <span>{task.date}</span>}
+            {task.important && <span className="badge">⭐ Importante</span>}
+
+            <div className="task-actions">
+                <button
+                onClick={() => toggleCompleted(task.id)} 
+                className="complete-btn btn-outline">✓
+                {task.completed ? " Desmarcar" : " Marcar completada"}</button>
+
+                {/* Botón para marcar como importante */}
+                <button
+                className={`important-btn btn-outline ${task.important ? "active" : ""}`}
+                onClick={() => toggleImportant(task.id)}>
+                {task.important ? "Quitar importancia" : "Marcar importante"}
+                </button>
+
+                <button
+                className="edit-btn"
+                onClick={() => {
+                    startEditing(task);
+                    onOpenPanel("editarTarea");
+                }}>Editar</button>
+
+                <button
+                className="cancel-btn"
+                onClick={() => deleteTask(task.id)}>Eliminar</button>
+            </div>
+            </>
+        )}
         </div>
     );
 };

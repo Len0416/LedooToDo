@@ -12,5 +12,5 @@ export const useSettingsStore = create<SettingsState>((set) => ({
     theme: "light",
     wallpaper: "",
     setTheme: (theme) => set({ theme }),
-    setWallpaper: (url) => set({ wallpaper: url }), // 👈 aquí está la función
+    setWallpaper: (url) => set({ wallpaper: url }),
 }));
