@@ -53,7 +53,7 @@ const TaskForm: React.FC = () => {
             />{" "}
             Importante
         </label>
-        <button type="submit">Agregar</button>
+        <button className="btn" type="submit">Agregar</button>
         </form>
     );
 };

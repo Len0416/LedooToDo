@@ -18,8 +18,8 @@
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
-    gap: 8px;
+    justify-content: start;
+    gap: 15px;
 }
 
 .task-form {
@@ -36,7 +36,6 @@
     z-index: 4;
     box-shadow: var(--shadow);
 }
-
 
 .task-form input[type="text"],
 .task-form input[type="datetime-local"] {
@@ -57,16 +56,6 @@
     color: var(--text);
 }
 
-.task-form button {
-    padding: 8px 16px;
-    background: var(--primary);
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 0.9rem;
-}
-
 .edit-input {
     background: var(--surface-2);
     border: 1px solid var(--border);
@@ -75,48 +64,6 @@
     border-radius: 6px;
     font-size: 0.9rem;
     margin: 2px 0;
-}
-
-.cancel-btn {
-    background: var(--danger);
-    color: white;
-    border: none;
-    border-radius: 6px;
-    margin-left: 4px;
-    cursor: pointer;
-}
-
-.edit-btn {
-    height: 25px;
-    cursor: pointer;
-    border-radius: 10px;
-    text-align: center;
-    place-items: center;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    color: var(--text);
-}
-
-.edit-input:focus {
-    outline: none;
-    border-color: var(--primary);
-}
-.cancel-btn:hover {
-    background: #e53935;
-}
-
-.task-actions .cancel-btn {
-    height: 25px;
-    background: var(--danger);
-    color: white;
-    border: none;
-    border-radius: 6px;
-    margin-left: 4px;
-    cursor: pointer;
-}
-
-.task-actions .cancel-btn:hover {
-    background: #e53935;
 }
 
 .checkbox {
@@ -156,34 +103,7 @@
     align-items: center;
 }
 
-.tag.important {
-    max-height: 25px;
-    background-color: var(--warning);
-    padding: 0.1rem 0.5rem;
-    border-radius: 4px;
-    white-space: nowrap;
-    text-align: center;
-}
-
 .date {
     font-size: 0.9rem;
     color: var(--muted);
-}
-
-.btn-cancel {
-    background-color: transparent;
-    color: var(--danger);
-    border: 1px solid var(--danger);
-    padding: 0.3rem 0.6rem;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.btn-icon[aria-label="Eliminar"] {
-    background-color: var(--danger);
-    color: white;
-    border: none;
-    padding: 0.3rem 0.6rem;
-    border-radius: 4px;
-    cursor: pointer;
 }

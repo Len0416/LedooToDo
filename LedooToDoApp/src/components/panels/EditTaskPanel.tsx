@@ -6,8 +6,7 @@ type EditTaskPanelProps = {
 };
 
 const EditTaskPanel: React.FC<EditTaskPanelProps> = ({ isOpen, onClose }) => {
-    const { editingTask, updateTask, cancelEditing, setEditingTask, toggleImportant } = useTaskStore();
-
+    const { editingTask, updateTask, cancelEditing, setEditingTask, toggleImportant, toggleCompleted } = useTaskStore();
     if (!editingTask) return null;
 
     const handleSave = () => {
@@ -27,38 +26,29 @@ const EditTaskPanel: React.FC<EditTaskPanelProps> = ({ isOpen, onClose }) => {
                     setEditingTask({ ...editingTask, title: e.target.value })
             }
             />
-
             <input
             type="datetime-local"
             value={editingTask.date || ""}
             onChange={(e) =>
                     setEditingTask({ ...editingTask, date: e.target.value })
-            }
-            />
-            <label>
-            <input
-            type="checkbox"
-            checked={editingTask.completed || false}
-            onChange={(e) =>
-                setEditingTask({ ...editingTask, completed: e.target.checked })
-            }
-            />
-            </label>
+            }/>
             <div className="panel-actions">
             <button
-                className={`important-btn ${editingTask.important ? "active" : ""}`}
+                onClick={() => toggleCompleted(editingTask.id)} 
+                className={"complete-btn " + (editingTask.completed ? "active" : "")}>✓
+                {editingTask.completed ? " Desmarcar" : " Marcar completada"}</button>
+            <button
+                className={`important-btn ${editingTask.important ? "important" : ""}`}
                 onClick={() => toggleImportant(editingTask.id)}>
                 {editingTask.important ? "Quitar importancia" : "Marcar importante"}
             </button>
-            <button onClick={handleSave}>Guardar</button>
+            <button className="save-btn" onClick={handleSave}>Guardar</button>
             <button
+                className="cancel-btn"
                 onClick={() => {
                 cancelEditing();
                 onClose();
-                }}
-            >
-                Cancelar
-            </button>
+                }}>Cancelar</button>
             </div>
         </div>
         </aside>

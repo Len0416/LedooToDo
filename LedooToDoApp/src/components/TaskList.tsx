@@ -9,7 +9,7 @@ const TaskList: React.FC<{ onOpenPanel: (panel: string) => void }> = ({ onOpenPa
         {tasks.length === 0 ? (
             <p>No hay tareas pendientes</p>
         ) : (
-            tasks.map(task => <TaskItem key={task.id} task={task} onOpenPanel={onOpenPanel} />)
+            tasks.map(task => <TaskItem key={task.id} task={task} onOpenPanel={onOpenPanel} onClose={() => {}} />)
         )}
         </div>
     );

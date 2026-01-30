@@ -1,0 +1,103 @@
+/* Base button styles */
+.btn,
+.btn-outline,
+.btn-icon,
+.edit-btn,
+.cancel-btn,
+.important-btn,
+.complete-btn,
+.save-btn {
+    font: inherit;
+    font-weight: bold;
+    cursor: pointer;
+    height: 35px;
+    width: max-content;
+    border-radius: 10px;
+    text-align: center;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+/* Primary button */
+.btn {
+    background: var(--primary);
+    color: var(--text);
+    border: none;
+    padding: 10px 14px;
+}
+
+/* Outline button */
+.btn-outline {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+}
+/* Icon button */
+.btn-icon {
+    width: 32px;
+    height: 32px;
+    display: grid;
+    place-items: center;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+    z-index: 1;
+}
+
+/* Cancel button */
+.task-actions .cancel-btn {
+    background: var(--danger);
+    color: var(--text);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.cancel-btn:hover {
+    background: #e53935;
+}
+
+/* Edit button */
+.edit-btn {
+    background: var(--accent);
+    color: var(--text);
+}
+
+/* Important toggle button */
+.important-btn {
+    background: var(--warning);
+    color: var(--text);
+    padding: 6px 10px;
+    border-radius: 6px;
+}
+.important-btn.important {
+    background: transparent;
+    border: 2px solid var(--warning);
+    color: var(--warning);
+} 
+
+/* Complete toggle button */
+.save-btn, .complete-btn {
+    background: var(--success);
+    color: var(--text);
+}
+
+.complete-btn:hover {
+    background: #43a047;
+}
+
+.complete-btn.active {
+    background: transparent;
+    border: 2px solid var(--success);
+    color: var(--success);
+}
+
+/* Icon delete */
+.btn-icon[aria-label="Eliminar"] {
+    background-color: var(--danger);
+    color: white;
+    border: none;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+}
+.btn-icon[aria-label="Eliminar"]:hover {
+    background-color: #e53935;
+}

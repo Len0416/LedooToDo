@@ -3,6 +3,8 @@ import "../assets/styles/components/panels.css";
 import "../assets/styles/components/settings.css";
 import "../assets/styles/global.css";
 
+import "../assets/styles/ui/buttons.css";
+
 import Topbar from "../components/Topbar";
 import Sidebar from "../components/Sidebar";
 import TaskForm from "../components/TaskForm";
