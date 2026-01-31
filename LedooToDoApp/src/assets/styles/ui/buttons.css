@@ -6,6 +6,7 @@
 .cancel-btn,
 .important-btn,
 .complete-btn,
+.date-button,
 .save-btn {
     font: inherit;
     font-weight: bold;
@@ -44,7 +45,7 @@
 }
 
 /* Cancel button */
-.task-actions .cancel-btn {
+.cancel-btn {
     background: var(--danger);
     color: var(--text);
     border: none;
@@ -100,4 +101,48 @@
 }
 .btn-icon[aria-label="Eliminar"]:hover {
     background-color: #e53935;
+}
+
+/* Date button */
+.date-button-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.date-button {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.date-button:hover {
+    background: #3b78d8;
+}
+
+.date-button-wrapper {
+    position: relative;
+    z-index: 5; /* más alto que .task-form */
+}
+
+.date-popup {
+    position: absolute;
+    bottom: calc(100% + 20px);
+    left: 0;
+    z-index: 10; /* más alto que el formulario */
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    padding: 8px;
+}
+
+.calendar-icon {
+    font-size: 1.1rem;
 }

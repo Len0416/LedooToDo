@@ -5,10 +5,6 @@
         width: 220px;
     }
 
-    .task-form {
-        width: max-content;
-    }
-
     .task {
         font-size: 0.95rem;
     }
@@ -21,14 +17,6 @@
     .main-header .actions {
         width: 40%;
     }
-    .task-form {
-        position: fixed;
-        bottom: 10px;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr auto;
-        padding: 12px;
-    }
 }
 
 @media screen and (min-width: 835px) and (max-width: 895px) {
@@ -38,14 +26,5 @@
 
     .main-header .actions {
         width: 50%;
-    }
-
-    .task-form {
-        position: fixed;
-        bottom: 10px;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr auto;
-        padding: 12px;
     }
 }

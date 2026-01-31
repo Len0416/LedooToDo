@@ -2,6 +2,7 @@ import { useState } from "react";
 import type { Task } from "../types/Task";
 import { useTaskStore } from "../store/useTaskStore";
 import "../assets/styles/components/tasks.css";
+import DateButton from "../ui/DateButton";
 
 const TaskForm: React.FC = () => {
     const { addTask } = useTaskStore();
@@ -18,12 +19,12 @@ const TaskForm: React.FC = () => {
         title,
         date,
         important,
-        completed: false, // siempre nueva tarea pendiente
+        completed: false,
         };
 
+        console.log("📌 Nueva tarea enviada:", task); // 👈 log para ver el resultado final
         addTask(task);
 
-        // limpiar formulario
         setTitle("");
         setDate(undefined);
         setImportant(false);
@@ -31,29 +32,39 @@ const TaskForm: React.FC = () => {
 
     return (
         <form className="task-form" onSubmit={handleSubmit}>
-        <input
+        {/* Campo de texto */}
+        <div className="input-group">
+            <input
+            id="task-title"
             type="text"
-            className="task-input"
+            className="input-field"
             placeholder="Nueva tarea…"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             required
+            />
+            <span className="input-underline"></span>
+        </div>
+        <div className="task-options">
+        {/* Selector de fecha con popup */}
+        <DateButton
+            value={date}
+            onChange={(newDateString) => {
+                console.log("✅ TaskForm recibe:", newDateString);
+                setDate(newDateString);
+            }}
         />
-        <input
-            type="datetime-local"
-            className="task-date"
-            value={date || ""}
-            onChange={(e) => setDate(e.target.value)}
-        />
-        <label className="task-important">
-            <input
-            type="checkbox"
-            checked={important}
-            onChange={(e) => setImportant(e.target.checked)}
-            />{" "}
-            Importante
-        </label>
+        {/* Botón de importancia */}
+        <button
+            type="button"
+            className={`important-btn ${important ? "marked" : ""}`}
+            onClick={() => setImportant(!important)}
+        >
+            {important ? "Desmarcar" : "Importante"}
+        </button>
+        {/* Botón de envío */}
         <button className="btn" type="submit">Agregar</button>
+        </div>
         </form>
     );
 };

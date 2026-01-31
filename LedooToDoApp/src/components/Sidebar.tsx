@@ -29,7 +29,7 @@ const Sidebar: React.FC = () => {
                     key={index}
                     className="nav-item"
                 >
-                <img src={icon} alt="Hoy" />
+                <img src={icon} alt={titles[index]} width={"auto"} height={"auto"}/>
                 <p>{titles[index]}</p>
                 </button>
             ))}

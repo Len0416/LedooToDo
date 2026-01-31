@@ -5,6 +5,7 @@
 .task {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 12px;
     padding: 12px;
     border: 1px solid var(--border);
@@ -22,22 +23,29 @@
     gap: 15px;
 }
 
+.task-options {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    flex-direction: row;
+    gap: 8px;
+    flex: 1 1 auto;
+}
+
 .task-form {
     position: fixed;
     bottom: 10px;
-    width: 70%;
+    width: 60vw;
     padding: 12px;
     background: var(--surface-2);
     border-radius: 12px;
     display: flex;
-    flex-wrap: nowrap;
     gap: 8px;
     align-items: center;
     z-index: 4;
     box-shadow: var(--shadow);
 }
 
-.task-form input[type="text"],
 .task-form input[type="datetime-local"] {
     flex: 1 1 100%;
     padding: 8px;
@@ -106,4 +114,12 @@
 .date {
     font-size: 0.9rem;
     color: var(--muted);
+}
+
+.inline-edit {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
+    width: 100%;
 }

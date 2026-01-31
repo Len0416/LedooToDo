@@ -1,9 +1,7 @@
-import "../assets/styles/components/topbar.css";
-
 // Tipo que describe cómo debe ser cada opción
 type NavOption = {
-  label: string;       // Texto visible
-  panel: string;       // Identificador del panel
+  label: string; // Texto visible
+  panel: string; // Identificador del panel
   isSetting?: boolean; // Opcional: si es un botón de ajustes
   isAccount?: boolean; // Opcional: si es un botón de cuenta
   isSections?: boolean; // Opcional: si es un botón de secciones

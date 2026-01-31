@@ -9,25 +9,26 @@
     }
 
     .task-form {
-        width: 80vw;
+        width: 90vw;
         position: fixed;
         bottom: 10px;
         left: 50%;
         transform: translateX(-50%);
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr auto;
         padding: 12px;
     }
 
-    .task-form input[type="text"],
-    .task-form input[type="datetime-local"] {
+    .task-form input[type="text"] {
         width: 100%;
+        min-width: 200px;
         font-size: 0.85rem;
     }
 
+    .task-options {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
     .task-form button {
-        width: 100%;
         font-size: 0.85rem;
         padding: 10px;
     }

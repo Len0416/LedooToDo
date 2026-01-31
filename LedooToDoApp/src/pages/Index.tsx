@@ -1,25 +1,40 @@
+// src/pages/Index.tsx
+// Página principal de la aplicación Ledoo (ToDoApp)
+
+// Importación de estilos globales y específicos de componentes
 import "../assets/styles/components/main.css";
 import "../assets/styles/components/panels.css";
 import "../assets/styles/components/settings.css";
+import "../assets/styles/components/topbar.css";
+import "../assets/styles/components/sidebar.css";
+import "../assets/styles/components/tasks.css";
 import "../assets/styles/global.css";
 
+// Importación de estilos UI
 import "../assets/styles/ui/buttons.css";
+import "../assets/styles/ui/tags.css";
+import "../assets/styles/ui/inputs.css";
 
-import Topbar from "../components/Topbar";
-import Sidebar from "../components/Sidebar";
-import TaskForm from "../components/TaskForm";
-import TaskList from "../components/TaskList";
+// Importación de componentes
+import Topbar from "../components/Topbar.tsx";
+import Sidebar from "../components/Sidebar.tsx";
+import TaskForm from "../components/TaskForm.tsx";
+import TaskList from "../components/TaskList.tsx";
 
-import PanelPerfil from "../components/panels/PanelPerfil"; 
-import PanelSecciones from "../components/panels/PanelSecciones"; 
-import SettingsPanel from "../components/panels/SettingsPanel";
-import PanelListas from "../components/panels/PanelListas";
-import EditTaskPanel from "../components/panels/EditTaskPanel";
+// Importación de paneles
+import PanelPerfil from "../components/panels/PanelPerfil.tsx"; 
+import PanelSecciones from "../components/panels/PanelSecciones.tsx"; 
+import SettingsPanel from "../components/panels/SettingsPanel.tsx";
+import PanelListas from "../components/panels/PanelListas.tsx";
+import EditTaskPanel from "../components/panels/EditTaskPanel.tsx";
 
-import { usePanelManager } from "../hooks/usePanelManager";
+// Importación de hooks
+import { usePanelManager } from "../hooks/usePanelManager.ts";
 
-import { useSettingsStore } from "../store/useSettingsStore";
+// Importación de store
+import { useSettingsStore } from "../store/useSettingsStore.ts";
 
+// Componente funcional Index
 const Index: React.FC = () => {
     const { openPanel, open, close } = usePanelManager();
     const { theme, wallpaper, setWallpaper, setTheme } = useSettingsStore();
