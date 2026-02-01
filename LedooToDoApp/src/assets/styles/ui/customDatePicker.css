@@ -82,3 +82,19 @@
     border-radius: 4px;
     cursor: pointer;
 }
+
+.date-popup {
+    position: absolute;
+    left: 0;
+    z-index: 3;
+}
+
+.popup-down {
+    top: 100%;
+    margin-top: 8px;
+}
+
+.popup-up {
+    bottom: 100%;
+    margin-bottom: 8px;
+}

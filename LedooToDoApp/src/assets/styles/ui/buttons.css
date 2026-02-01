@@ -13,17 +13,22 @@
     cursor: pointer;
     height: 35px;
     width: max-content;
-    border-radius: 10px;
+    padding: 6px 12px;
+    border-radius: 6px;
     text-align: center;
+    border: none;
+    cursor: pointer;
+    color: var(--button-text);
     transition: background 0.2s ease, color 0.2s ease;
 }
 
 /* Primary button */
 .btn {
     background: var(--primary);
-    color: var(--text);
-    border: none;
-    padding: 10px 14px;
+}
+
+.btn:hover {
+    background: #3b78d8;
 }
 
 /* Outline button */
@@ -32,6 +37,7 @@
     border: 1px solid var(--border);
     color: var(--text);
 }
+
 /* Icon button */
 .btn-icon {
     width: 32px;
@@ -44,44 +50,55 @@
     z-index: 1;
 }
 
+.btn-icon:hover {
+    background: var(--surface-2);
+}
+
 /* Cancel button */
 .cancel-btn {
     background: var(--danger);
-    color: var(--text);
     border: none;
-    border-radius: 6px;
     cursor: pointer;
 }
 .cancel-btn:hover {
-    background: #e53935;
+    background: #d32f2f;
 }
 
 /* Edit button */
 .edit-btn {
     background: var(--accent);
-    color: var(--text);
+}
+
+.edit-btn:hover {
+    background: #2484aa;
 }
 
 /* Important toggle button */
 .important-btn {
     background: var(--warning);
-    color: var(--text);
-    padding: 6px 10px;
     border-radius: 6px;
 }
 .important-btn.important {
     background: transparent;
     border: 2px solid var(--warning);
     color: var(--warning);
-} 
+}
+
+.important-btn:hover {
+    background: #d1860c;
+}
+
+.important-btn.important:hover {
+    background: var(--warning);
+    color: var(--button-text);
+}
 
 /* Complete toggle button */
 .save-btn, .complete-btn {
     background: var(--success);
-    color: var(--text);
 }
 
-.complete-btn:hover {
+.save-btn:hover, .complete-btn:hover {
     background: #43a047;
 }
 
@@ -91,16 +108,9 @@
     color: var(--success);
 }
 
-/* Icon delete */
-.btn-icon[aria-label="Eliminar"] {
-    background-color: var(--danger);
-    color: white;
-    border: none;
-    padding: 0.3rem 0.6rem;
-    border-radius: 4px;
-}
-.btn-icon[aria-label="Eliminar"]:hover {
-    background-color: #e53935;
+.complete-btn.active:hover {
+    background: var(--success);
+    color: var(--button-text);
 }
 
 /* Date button */
@@ -111,11 +121,8 @@
 
 .date-button {
     background: var(--primary);
-    color: white;
+    color: var(--button-text);
     border: none;
-    padding: 8px 14px;
-    border-radius: 6px;
-    cursor: pointer;
     font-size: 0.9rem;
     display: flex;
     align-items: center;

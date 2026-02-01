@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import CustomDatePicker from "./CustomDatePicker";
 
 type DateButtonProps = {
@@ -8,18 +8,41 @@ type DateButtonProps = {
 
 const DateButton: React.FC<DateButtonProps> = ({ value, onChange }) => {
     const [isOpen, setIsOpen] = useState(false);
+    const [position, setPosition] = useState<"up" | "down">("down");
+    const buttonRef = useRef<HTMLButtonElement>(null);
+
+    useEffect(() => {
+        if (isOpen && buttonRef.current) {
+        const rect = buttonRef.current.getBoundingClientRect();
+        const spaceBelow = window.innerHeight - rect.bottom;
+        const spaceAbove = rect.top;
+
+        if (spaceBelow < 300 && spaceAbove > 300) {
+            setPosition("up");
+        } else {
+            setPosition("down");
+        }
+        }
+    }, [isOpen]);
+
     const handleConfirm = (date: Date) => {
-    const iso = date.toISOString().split(".")[0];
-    console.log("📅 DateButton recibió:", iso);
-    onChange(iso); // 👈 este es el único lugar donde se llama onChange
+        const iso = date.toISOString().split(".")[0];
+        onChange(iso);
+        setIsOpen(false);
     };
+
     return (
-        <div className="date-button-wrapper">
-        <button type="button" className="date-button button" onClick={() => setIsOpen(!isOpen)}>
-            {value ? value : "Seleccionar fecha"}
+        <div className="date-button-wrapper" style={{ position: "relative" }}>
+        <button
+            type="button"
+            className="date-button"
+            onClick={() => setIsOpen(!isOpen)}
+            ref={buttonRef}>{value ? value : "Seleccionar fecha"}
         </button>
         {isOpen && (
-            <div className="date-popup">
+            <div
+            className={`date-popup ${position === "up" ? "popup-up" : "popup-down"}`}
+            >
             <CustomDatePicker
                 value={value ? new Date(value) : undefined}
                 onConfirm={handleConfirm}

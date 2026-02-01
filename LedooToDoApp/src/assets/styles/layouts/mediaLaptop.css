@@ -1,5 +1,8 @@
 /* 💻 Tablet landscape / small laptop (835–1280px) */
 @media screen and (min-width: 835px) and (max-width: 1280px) {
+    .optionsNav {
+        gap: 30px;
+    }
 
     .search input {
         width: 220px;
@@ -7,24 +10,5 @@
 
     .task {
         font-size: 0.95rem;
-    }
-}
-@media screen and (min-width: 895px) and (max-width: 1000px) {
-    .optionsNav {
-        width: 50%;
-    }
-
-    .main-header .actions {
-        width: 40%;
-    }
-}
-
-@media screen and (min-width: 835px) and (max-width: 895px) {
-    .optionsNav {
-        width: 60%;
-    }
-
-    .main-header .actions {
-        width: 50%;
     }
 }

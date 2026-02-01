@@ -69,24 +69,28 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onOpenPanel }) => {
                 {task.title}
             </span>
             {task.date && <span>{task.date}</span>}
-            {task.important && <span className="tag important">Importante</span>}
-            {task.completed && <span className="tag completed">Completada</span>}
+            <div className="task-tags">
+                {task.important && <span className="tag important">Importante</span>}
+                {task.completed && <span className="tag completed">Completada</span>}
+            </div>
 
             <div className="task-actions">
-                <button
-                onClick={() => toggleCompleted(task.id)}
-                className={"complete-btn " + (task.completed ? "active" : "")}
-                >
-                ✓ {task.completed ? " Desmarcar" : " Marcar completada"}
-                </button>
+                <div>
+                    <button
+                    onClick={() => toggleCompleted(task.id)}
+                    className={"complete-btn " + (task.completed ? "active" : "")}
+                    >
+                    ✓ {task.completed ? " Desmarcar" : " Marcar completada"}
+                    </button>
 
-                {/* Botón para marcar como importante */}
-                <button
-                className={`important-btn ${task.important ? "important" : ""}`}
-                onClick={() => toggleImportant(task.id)}
-                >
-                {task.important ? "Quitar importancia" : "Marcar importante"}
-                </button>
+                    {/* Botón para marcar como importante */}
+                    <button
+                    className={`important-btn ${task.important ? "important" : ""}`}
+                    onClick={() => toggleImportant(task.id)}
+                    >
+                    {task.important ? "Quitar importancia" : "Marcar importante"}
+                    </button>
+                </div>
 
                 <button
                 className="edit-btn"

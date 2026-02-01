@@ -1,7 +1,6 @@
 .input-group {
     position: relative;
     width: 100%;
-    margin: 20px 0;
 }
 
 .input-wrapper {
@@ -36,23 +35,3 @@
 .input-field:focus + .input-underline {
     transform: scaleX(1);
 }
-
-.date-button {
-    background: var(--primary);
-    color: white;
-    border: none;
-    padding: 8px 14px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    transition: background 0.2s ease;
-}
-
-.date-button:hover {
-    background: #3b78d8;
-}
-
-.date-button-wrapper {
-    display: inline-block;
-}
-

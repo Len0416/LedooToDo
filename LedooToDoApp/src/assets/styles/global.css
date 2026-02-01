@@ -3,11 +3,13 @@
     --surface: #1E1E1E;
     --surface-2: #262626;
     --text: #EDEDED;
+    --button-text: #121212;
+    --icon: #FF9664;
     --muted: #A3A3A3;
-    --primary: #4F8EF7;
-    --accent: #7DD3FC;
+    --primary: #7DD3FC;
+    --accent: #3bd2d9;
     --success: #34D399;
-    --danger: #F87171;
+    --danger: #ff2121;
     --warning: #FBBF24;
     --border: #2E2E2E;
     --shadow: 0 8px 24px rgba(0,0,0,0.3);

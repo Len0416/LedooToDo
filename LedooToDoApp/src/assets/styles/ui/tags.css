@@ -1,17 +1,16 @@
-.tag.important {
-    max-height: 25px;
-    background-color: var(--warning);
+.tag {
+    max-height: 30px;
+    color: var(--button-text);
     padding: 0.1rem 0.5rem;
     border-radius: 4px;
     white-space: nowrap;
     text-align: center;
 }
 
+.tag.important {
+    background-color: var(--warning);
+}
+
 .tag.completed {
-    max-height: 25px;
     background-color: var(--success);
-    padding: 0.1rem 0.5rem;
-    border-radius: 4px;
-    white-space: nowrap;
-    text-align: center;
 }

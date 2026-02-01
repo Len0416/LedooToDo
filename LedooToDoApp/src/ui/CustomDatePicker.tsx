@@ -45,11 +45,11 @@ const CustomDatePicker: React.FC<CustomDatePickerProps> = ({ value, onConfirm, o
     return (
         <div className="custom-date-picker">
         <div className="calendar-header">
-            <button onClick={() => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1))}>◀</button>
+            <button type="button" onClick={() => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1))}>◀</button>
             <span>
             {currentMonth.toLocaleString("default", { month: "long" })} {currentMonth.getFullYear()}
             </span>
-            <button onClick={() => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1))}>▶</button>
+            <button type="button" onClick={() => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1))}>▶</button>
         </div>
 
         <div className="calendar-grid">
