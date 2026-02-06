@@ -4,12 +4,11 @@
     right: 0;
     left: 0;
     width: 100%;
-    min-height: 350px;
-    height: 40vh;
+    height: 100%;
     background: var(--surface);
     border-bottom: 1px solid var(--border);
     box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    z-index: 3;
+    z-index: 4;
     transform: translateY(-100%);
     opacity: 0;
     overflow: hidden;
@@ -86,7 +85,7 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: start;
+    justify-content: center;
     gap: 12px;
     margin-top: 16px;
 }

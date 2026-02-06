@@ -8,10 +8,16 @@
     .wallpaper-card img {
         height: 120px;
     }
+    .date-popup {
+        left: -30%;
     }
+}
 
     @media screen and (min-width: 2560px) {
     .task {
         font-size: 1.2rem;
+    }
+    .date-popup {
+        left: -30%;
     }
 }

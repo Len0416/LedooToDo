@@ -138,18 +138,6 @@
     z-index: 5; /* más alto que .task-form */
 }
 
-.date-popup {
-    position: absolute;
-    bottom: calc(100% + 20px);
-    left: 0;
-    z-index: 10; /* más alto que el formulario */
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    box-shadow: var(--shadow);
-    padding: 8px;
-}
-
 .calendar-icon {
     font-size: 1.1rem;
 }

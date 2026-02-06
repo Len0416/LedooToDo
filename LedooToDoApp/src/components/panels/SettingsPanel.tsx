@@ -25,7 +25,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
     const fondos = [fondo1, fondo2, fondo3, fondo4, fondo5, fondo6, fondo7, fondo8, fondo9];
 
     return (
-        <aside className="settings-panel">
+        <aside className={`settings-panel ${isOpen ? "active" : ""}`}>
         <div className="settings-header">
             <h3>Ajustes</h3>
             <button className="btn-icon close-settings" onClick={onClose}>✖</button>

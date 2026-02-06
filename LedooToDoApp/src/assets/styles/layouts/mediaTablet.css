@@ -13,11 +13,10 @@
     }
 
     .task-form {
-        width: 90vw;
+        width: 90%;
         position: fixed;
+        flex-direction: column;
         bottom: 10px;
-        left: 50%;
-        transform: translateX(-50%);
         padding: 12px;
     }
 
@@ -72,5 +71,9 @@
     .sidebar {
         overflow: hidden;
         padding: 0px;
+    }
+
+    .date-popup {
+        left: -50%;
     }
 }

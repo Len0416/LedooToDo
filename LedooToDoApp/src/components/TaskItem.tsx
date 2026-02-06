@@ -75,7 +75,7 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onOpenPanel }) => {
             </div>
 
             <div className="task-actions">
-                <div>
+                <div className="checkboxesTask">
                     <button
                     onClick={() => toggleCompleted(task.id)}
                     className={"complete-btn " + (task.completed ? "active" : "")}
@@ -91,23 +91,18 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onOpenPanel }) => {
                     {task.important ? "Quitar importancia" : "Marcar importante"}
                     </button>
                 </div>
+                <div className="actionsTask">
+                    <button
+                    className="edit-btn"
+                    onClick={() => {
+                        startEditing(task);
+                        onOpenPanel("editarTarea");
+                    }}>Editar</button>
 
-                <button
-                className="edit-btn"
-                onClick={() => {
-                    startEditing(task);
-                    onOpenPanel("editarTarea");
-                }}
-                >
-                Editar
-                </button>
-
-                <button
-                className="cancel-btn"
-                onClick={() => deleteTask(task.id)}
-                >
-                Eliminar
-                </button>
+                    <button
+                    className="cancel-btn"
+                    onClick={() => deleteTask(task.id)}>Eliminar</button>
+                </div>
             </div>
             </>
         )}

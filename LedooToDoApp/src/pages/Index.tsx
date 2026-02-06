@@ -73,7 +73,6 @@ const Index: React.FC = () => {
 
         <Sidebar />
         <main className="main">
-            <div className="main-content">
             <header className="main-header">
                 <h1>Hoy</h1>
                 <div className="actions">
@@ -83,6 +82,7 @@ const Index: React.FC = () => {
                 </label>
                 </div>
             </header>
+            <div className="main-content">
             <TaskList onOpenPanel={open} />
             </div>
             <TaskForm />

@@ -58,8 +58,7 @@ const TaskForm: React.FC = () => {
         <button
             type="button"
             className={`important-btn ${important ? "marked" : ""}`}
-            onClick={() => setImportant(!important)}
-        >
+            onClick={() => setImportant(!important)}>
             {important ? "Desmarcar" : "Importante"}
         </button>
         {/* Botón de envío */}

@@ -9,6 +9,7 @@
 
 .input-field {
     width: 100%;
+    max-width: 40vw;
     padding: 10px 0;
     background: transparent;
     border: none;
@@ -34,4 +35,10 @@
 
 .input-field:focus + .input-underline {
     transform: scaleX(1);
+}
+.checkboxesTask, .actionsTask {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
 }

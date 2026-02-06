@@ -2,6 +2,7 @@
     padding: 24px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     flex-direction: column;
     gap: 24px;
     background-color: rgba(36, 35, 35, 0.1); /* capa oscura semitransparente */
@@ -12,12 +13,14 @@
 
 .main-content {
     height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
 .main-header {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;

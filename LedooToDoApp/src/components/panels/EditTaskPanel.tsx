@@ -1,4 +1,6 @@
+import { useState } from "react";
 import { useTaskStore } from "../../store/useTaskStore";
+import DateButton from "../../ui/DateButton";
 
 type EditTaskPanelProps = {
     isOpen: boolean;
@@ -6,11 +8,19 @@ type EditTaskPanelProps = {
 };
 
 const EditTaskPanel: React.FC<EditTaskPanelProps> = ({ isOpen, onClose }) => {
-    const { editingTask, updateTask, cancelEditing, setEditingTask, toggleImportant, toggleCompleted } = useTaskStore();
-    if (!editingTask) return null;
+    const { editingTask, updateTask, cancelEditing, toggleImportant } = useTaskStore();
+
+    const [title, setTitle] = useState(editingTask?.title ?? "");
+    const [date, setDate] = useState<string | undefined>(editingTask?.date ?? undefined);
+
+    if(!editingTask) return null;
 
     const handleSave = () => {
-        updateTask(editingTask);
+        updateTask({
+        ...editingTask,
+        title,
+        date,
+        });
         onClose();
     };
 
@@ -19,40 +29,51 @@ const EditTaskPanel: React.FC<EditTaskPanelProps> = ({ isOpen, onClose }) => {
         <div className="panel-body">
             <h2>Editar tarea</h2>
             <button className="btn-icon close-panel" aria-label="Cerrar" onClick={onClose}>✖</button>
+            
+            <div className="input-group">
             <input
+                id="task-title"
                 type="text"
-                value={editingTask.title}
-                onChange={(e) =>
-                    setEditingTask({ ...editingTask, title: e.target.value })
-            }
+                className="input-field"
+                placeholder="Nueva tarea…"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                required
             />
-            <input
-            type="datetime-local"
-            value={editingTask.date || ""}
-            onChange={(e) =>
-                    setEditingTask({ ...editingTask, date: e.target.value })
-            }/>
+            <span className="input-underline"></span>
+            </div>
+
+            <DateButton
+            value={date}
+            onChange={(newDateString) => setDate(newDateString)}
+            />
+
             <div className="panel-actions">
-            <button
-                onClick={() => toggleCompleted(editingTask.id)} 
-                className={"complete-btn " + (editingTask.completed ? "active" : "")}>✓
-                {editingTask.completed ? " Desmarcar" : " Marcar completada"}</button>
-            <button
+            <div className="checkboxesTask">
+                <button
                 className={`important-btn ${editingTask.important ? "important" : ""}`}
-                onClick={() => toggleImportant(editingTask.id)}>
+                onClick={() => toggleImportant(editingTask.id)}
+                >
                 {editingTask.important ? "Quitar importancia" : "Marcar importante"}
-            </button>
-            <button className="save-btn" onClick={handleSave}>Guardar</button>
-            <button
+                </button>
+            </div>
+            <div className="actionsTask">
+                <button className="save-btn" onClick={handleSave}>Guardar</button>
+                <button
                 className="cancel-btn"
                 onClick={() => {
-                cancelEditing();
-                onClose();
-                }}>Cancelar</button>
+                    cancelEditing();
+                    onClose();
+                }}
+                >
+                Cancelar
+                </button>
+            </div>
             </div>
         </div>
         </aside>
     );
 };
+
 
 export default EditTaskPanel;

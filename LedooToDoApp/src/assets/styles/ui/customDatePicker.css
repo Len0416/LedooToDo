@@ -3,7 +3,7 @@
     border: 1px solid var(--border);
     border-radius: 8px;
     padding: 12px;
-    width: 280px;
+    width: max-content;
     box-shadow: var(--shadow);
     color: var(--text);
 }
@@ -34,8 +34,9 @@
     border: 1px solid var(--border);
     border-radius: 4px;
     color: var(--text);
-    padding: 6px;
+    padding: 4px;
     cursor: pointer;
+    font-size: small;
     transition: background 0.2s ease;
 }
 
@@ -85,7 +86,7 @@
 
 .date-popup {
     position: absolute;
-    left: 0;
+    left: -25%;
     z-index: 3;
 }
 
@@ -95,6 +96,6 @@
 }
 
 .popup-up {
-    bottom: 100%;
+    bottom: 125%;
     margin-bottom: 8px;
 }

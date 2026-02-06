@@ -11,4 +11,7 @@
     .task {
         font-size: 0.95rem;
     }
+    .date-popup {
+        left: -30%;
+    }
 }
