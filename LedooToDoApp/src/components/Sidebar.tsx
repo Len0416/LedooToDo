@@ -1,4 +1,5 @@
-import "../assets/styles/components/sidebar.css";
+import { Link } from 'react-router-dom';
+import { Today, Important, AllTasks, Calendar } from './main/Main';
 
 import iconSection1 from "../assets/images/icons/Sun.png";
 import iconSection2 from "../assets/images/icons/Star.png";
@@ -7,8 +8,12 @@ import iconSection4 from "../assets/images/icons/Calendar.png";
 import userIcon from "../assets/images/icons/User.png";
 
 const Sidebar: React.FC = () => {
-    const icons = [iconSection1, iconSection2, iconSection3, iconSection4];
-    const titles = ["Hoy", "Destacados", "Tareas", "Calendario"];
+    const sections = [
+        { title: "Hoy", icon: iconSection1, path: "/today", component: Today },
+        { title: "Destacados", icon: iconSection2, path: "/important", component: Important },
+        { title: "Tareas", icon: iconSection3, path: "/tasks", component: AllTasks },
+        { title: "Calendario", icon: iconSection4, path: "/calendar", component: Calendar },
+    ];
     const listItems = ["Trabajo", "Personal", "Estudio"];
 
     return (
@@ -24,14 +29,11 @@ const Sidebar: React.FC = () => {
         <div className="divider" role="separator"></div>
 
         <nav className="nav-sections">
-            {icons.map((icon, index) => (
-                <button
-                    key={index}
-                    className="nav-item"
-                >
-                <img src={icon} alt={titles[index]} width={"auto"} height={"auto"}/>
-                <p>{titles[index]}</p>
-                </button>
+            {sections.map((section, index) => (
+            <Link key={index} to={section.path} className="nav-item">
+                <img src={section.icon} alt={section.title} />
+                <p>{section.title}</p>
+            </Link>
             ))}
         </nav>
 
@@ -44,16 +46,11 @@ const Sidebar: React.FC = () => {
             <ul className="list-group">
             {listItems.map((item, index) => (
                 <li key={index} className="list-item">
-                {item}
+                <Link to={`/listas/${item.toLowerCase()}`}>{item}</Link>
                 </li>
             ))}
             <button className="btn-outline create-list">Crear lista</button>
             </ul>
-        </div>
-        <div className="divider" role="separator"></div>
-        <div className="notes">
-            <h3>Notas</h3>
-            <button className="btn-outline">Tablero de notas</button>
         </div>
         </aside>
     );

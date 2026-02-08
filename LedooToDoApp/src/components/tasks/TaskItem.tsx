@@ -1,11 +1,12 @@
-import type { Task } from "../types/Task";
-import { useTaskStore } from "../store/useTaskStore";
+import type { Task } from "../../types/Task";
+import { useTaskStore } from "../../store/useTaskStore";
 import { useState } from "react";
-import DateButton from "../ui/DateButton";
+import DateButton from "../../ui/DateButton";
 
 type TaskItemProps = {
     task: Task;
     onOpenPanel: (panel: string) => void;
+    onClose?: () => void;
 };
 
 const TaskItem: React.FC<TaskItemProps> = ({ task, onOpenPanel }) => {

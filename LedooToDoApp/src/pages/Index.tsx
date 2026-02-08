@@ -1,6 +1,8 @@
 // src/pages/Index.tsx
 // Página principal de la aplicación Ledoo (ToDoApp)
 
+import { Outlet } from 'react-router-dom';
+
 // Importación de estilos globales y específicos de componentes
 import "../assets/styles/components/main.css";
 import "../assets/styles/components/panels.css";
@@ -18,8 +20,8 @@ import "../assets/styles/ui/inputs.css";
 // Importación de componentes
 import Topbar from "../components/Topbar.tsx";
 import Sidebar from "../components/Sidebar.tsx";
-import TaskForm from "../components/TaskForm.tsx";
-import TaskList from "../components/TaskList.tsx";
+import TaskForm from "../components/tasks/TaskForm.tsx";
+import TaskList from "../components/tasks/TaskList.tsx";
 
 // Importación de paneles
 import PanelPerfil from "../components/panels/PanelPerfil.tsx"; 
@@ -73,15 +75,7 @@ const Index: React.FC = () => {
 
         <Sidebar />
         <main className="main">
-            <header className="main-header">
-                <h1>Hoy</h1>
-                <div className="actions">
-                <label className="search">
-                    <span className="sr-only">Buscar tareas</span>
-                    <input type="search" placeholder="Buscar tareas…" />
-                </label>
-                </div>
-            </header>
+            <Outlet />
             <div className="main-content">
             <TaskList onOpenPanel={open} />
             </div>

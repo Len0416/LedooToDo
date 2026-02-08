@@ -1,8 +1,7 @@
 import { useState } from "react";
-import type { Task } from "../types/Task";
-import { useTaskStore } from "../store/useTaskStore";
-import "../assets/styles/components/tasks.css";
-import DateButton from "../ui/DateButton";
+import type { Task } from "../../types/Task";
+import { useTaskStore } from "../../store/useTaskStore";
+import DateButton from "../../ui/DateButton";
 
 const TaskForm: React.FC = () => {
     const { addTask } = useTaskStore();

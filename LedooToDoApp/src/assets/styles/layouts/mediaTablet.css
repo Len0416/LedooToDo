@@ -71,6 +71,7 @@
     .sidebar {
         overflow: hidden;
         padding: 0px;
+        display: none;
     }
 
     .date-popup {

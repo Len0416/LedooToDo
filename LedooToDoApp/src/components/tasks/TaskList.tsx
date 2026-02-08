@@ -1,6 +1,6 @@
 import TaskItem from "./TaskItem";
-import { useTaskStore } from "../store/useTaskStore";
-import "../assets/styles/components/tasks.css";
+import { useTaskStore } from "../../store/useTaskStore";
+import "../../assets/styles/components/tasks.css";
 
 const TaskList: React.FC<{ onOpenPanel: (panel: string) => void }> = ({ onOpenPanel }) => {
     const { tasks } = useTaskStore();
