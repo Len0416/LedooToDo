@@ -1,5 +1,6 @@
 .main {
     padding: 24px;
+    height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -8,6 +9,7 @@
     background-color: rgba(36, 35, 35, 0.1); /* capa oscura semitransparente */
     background-blend-mode: multiply;
     border-radius: var(--radius);
+    overflow: visible;
     position: relative;
 }
 

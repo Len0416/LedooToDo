@@ -3,19 +3,21 @@
     #app {
         display: grid;
         grid-template-columns: 100vw;
-        grid-template-rows: 10% 0% 90%;
+        grid-template-rows: 10vh 90vh;
         width: 100vw;
-        overflow-x: hidden;
     }
 
     .topbar {
-        grid-column: 1 / -1;
         grid-row: 1;
         flex-direction: row;
         align-items: center;
         padding: 12px 16px;
+        position: fixed;
+        top: 0;
+        width: 100vw;
+        height: 10vh;
         gap: 8px;
-        height: auto;
+        z-index: 1;
     }
 
     .logo {
@@ -62,13 +64,14 @@
     }
 
     .main {
+        grid-row: 2;
         min-width: 100vw;
+        height: 90vh;
         padding: 16px;
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
         background-attachment: fixed;
-        position: relative;
     }
 
     .main::before {
