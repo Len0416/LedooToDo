@@ -7,6 +7,7 @@
 .important-btn,
 .complete-btn,
 .date-button,
+.delete-btn,
 .save-btn {
     font: inherit;
     font-weight: bold;
@@ -55,12 +56,12 @@
 }
 
 /* Cancel button */
-.cancel-btn {
+.cancel-btn, .delete-btn {
     background: var(--danger);
     border: none;
     cursor: pointer;
 }
-.cancel-btn:hover {
+.cancel-btn:hover, .delete-btn:hover {
     background: #d32f2f;
 }
 

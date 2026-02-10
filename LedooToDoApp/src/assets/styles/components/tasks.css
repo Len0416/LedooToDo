@@ -3,10 +3,11 @@
     gap: 10px;
 }
 .task {
-    width: max-content;
+    max-width: max-content;
+    width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
     flex-wrap: wrap;
     gap: 12px;
     padding: 12px;
@@ -99,4 +100,32 @@
     gap: 8px;
     flex-wrap: wrap;
     align-items: center;
+}
+
+.actionsList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.list {
+    width: 100%;
+    padding: 10px 12px;
+}
+
+.list a {
+    border-radius: 10px;
+    background: transparent;
+    color: var(--text);
+    border: 1px solid transparent;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.list:hover a {
+    border-color: var(--border);
+    background: #222;
 }

@@ -13,10 +13,10 @@ const PanelSecciones: React.FC<PanelSeccionesProps> = ({ isOpen, onClose }) => {
             </div>
         </div>
         <div className="panel-body">
-            <button className="btn-outline"><img src="../src/assets/images/icons/Sun.png" alt="Hoy" /><p>Hoy</p></button>
-            <button className="btn-outline"><img src="../src/assets/images/icons/Star.png" alt="Importante" /><p>Importante</p></button>
-            <button className="btn-outline"><img src="../src/assets/images/icons/CheckSquare.png" alt="Tareas" /><p>Tareas</p></button>
-            <button className="btn-outline"><img src="../src/assets/images/icons/Calendar.png" alt="Planificado" /><p>Planificado</p></button>
+            <button className="nav-item"><img src="../src/assets/images/icons/Sun.png" alt="Hoy" /><p>Hoy</p></button>
+            <button className="nav-item"><img src="../src/assets/images/icons/Star.png" alt="Importante" /><p>Importante</p></button>
+            <button className="nav-item"><img src="../src/assets/images/icons/CheckSquare.png" alt="Tareas" /><p>Tareas</p></button>
+            <button className="nav-item"><img src="../src/assets/images/icons/Calendar.png" alt="Planificado" /><p>Planificado</p></button>
         </div>
         </aside>
     );
