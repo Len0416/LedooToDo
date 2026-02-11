@@ -9,136 +9,140 @@
 .date-button,
 .delete-btn,
 .save-btn {
-    font: inherit;
-    font-weight: bold;
-    cursor: pointer;
-    height: 35px;
-    width: max-content;
-    padding: 6px 12px;
-    border-radius: 6px;
-    text-align: center;
-    border: none;
-    cursor: pointer;
-    color: var(--button-text);
-    transition: background 0.2s ease, color 0.2s ease;
+  font: inherit;
+  font-weight: bold;
+  cursor: pointer;
+  height: 35px;
+  width: max-content;
+  padding: 6px 12px;
+  border-radius: 6px;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  color: var(--button-text);
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
 /* Primary button */
 .btn {
-    background: var(--primary);
+  background: var(--primary);
 }
 
 .btn:hover {
-    background: #3b78d8;
+  background: #3b78d8;
 }
 
 /* Outline button */
 .btn-outline {
-    background: transparent;
-    border: 1px solid var(--border);
-    color: var(--text);
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
 }
 
 /* Icon button */
 .btn-icon {
-    width: 32px;
-    height: 32px;
-    display: grid;
-    place-items: center;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    color: var(--text);
-    z-index: 1;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  z-index: 1;
 }
 
 .btn-icon:hover {
-    background: var(--surface-2);
+  background: var(--surface-2);
 }
 
 /* Cancel button */
-.cancel-btn, .delete-btn {
-    background: var(--danger);
-    border: none;
-    cursor: pointer;
+.cancel-btn,
+.delete-btn {
+  background: var(--danger);
+  border: none;
+  cursor: pointer;
 }
-.cancel-btn:hover, .delete-btn:hover {
-    background: #d32f2f;
+.cancel-btn:hover,
+.delete-btn:hover {
+  background: #d32f2f;
 }
 
 /* Edit button */
 .edit-btn {
-    background: var(--accent);
+  background: var(--accent);
 }
 
 .edit-btn:hover {
-    background: #2484aa;
+  background: #2484aa;
 }
 
 /* Important toggle button */
 .important-btn {
-    background: var(--warning);
-    border-radius: 6px;
+  background: var(--warning);
+  border-radius: 6px;
 }
 .important-btn.important {
-    background: transparent;
-    border: 2px solid var(--warning);
-    color: var(--warning);
+  background: transparent;
+  border: 2px solid var(--warning);
+  color: var(--warning);
 }
 
 .important-btn:hover {
-    background: #d1860c;
+  background: #d1860c;
 }
 
 .important-btn.important:hover {
-    background: var(--warning);
-    color: var(--button-text);
+  background: var(--warning);
+  color: var(--button-text);
 }
 
 /* Complete toggle button */
-.save-btn, .complete-btn {
-    background: var(--success);
+.save-btn,
+.complete-btn {
+  background: var(--success);
 }
 
-.save-btn:hover, .complete-btn:hover {
-    background: #43a047;
+.save-btn:hover,
+.complete-btn:hover {
+  background: #43a047;
 }
 
 .complete-btn.active {
-    background: transparent;
-    border: 2px solid var(--success);
-    color: var(--success);
+  background: transparent;
+  border: 2px solid var(--success);
+  color: var(--success);
 }
 
 .complete-btn.active:hover {
-    background: var(--success);
-    color: var(--button-text);
+  background: var(--success);
+  color: var(--button-text);
 }
 
 /* Date button */
 .date-button-wrapper {
-    position: relative;
-    display: inline-block;
+  position: relative;
+  display: inline-block;
 }
 
 .date-button {
-    background: var(--primary);
-    color: var(--button-text);
-    border: none;
-    font-size: 0.9rem;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+  background: var(--primary);
+  color: var(--button-text);
+  border: none;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .date-button:hover {
-    background: #3b78d8;
+  background: #3b78d8;
 }
 
 .date-button-wrapper {
-    position: relative;
-    z-index: 5; /* más alto que .task-form */
+  position: relative;
+  z-index: 5; /* más alto que .task-form */
 }
 
 .calendar-icon {
-    font-size: 1.1rem;
+  font-size: 1.1rem;
 }

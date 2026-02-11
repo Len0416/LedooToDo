@@ -1,7 +1,7 @@
 // src/pages/Index.tsx
 // Página principal de la aplicación Ledoo (ToDoApp)
 
-import { Outlet } from 'react-router-dom';
+import { Outlet } from "react-router-dom";
 
 // Importación de estilos globales y específicos de componentes
 import "../assets/styles/components/main.css";
@@ -24,8 +24,8 @@ import TaskForm from "../components/tasks/TaskForm.tsx";
 import TaskList from "../components/tasks/TaskList.tsx";
 
 // Importación de paneles
-import PanelPerfil from "../components/panels/PanelPerfil.tsx"; 
-import PanelSecciones from "../components/panels/PanelSecciones.tsx"; 
+import PanelPerfil from "../components/panels/PanelPerfil.tsx";
+import PanelSecciones from "../components/panels/PanelSecciones.tsx";
 import SettingsPanel from "../components/panels/SettingsPanel.tsx";
 import PanelListas from "../components/panels/PanelListas.tsx";
 import EditTaskPanel from "../components/panels/EditTaskPanel.tsx";
@@ -38,51 +38,51 @@ import { useSettingsStore } from "../store/useSettingsStore.ts";
 
 // Componente funcional Index
 const Index: React.FC = () => {
-    const { openPanel, open, close } = usePanelManager();
-    const { theme, wallpaper, setWallpaper, setTheme } = useSettingsStore();
-    console.log("Index openPanel:", openPanel);
+  const { openPanel, open, close } = usePanelManager();
+  const { theme, wallpaper, setWallpaper, setTheme } = useSettingsStore();
+  console.log("Index openPanel:", openPanel);
 
-    return (
-        <div
-        id="app"
-        className={`theme-${theme}`}
-        style={{
-            backgroundImage: `url('${wallpaper}')`,
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "center",
-            backgroundSize: "cover",
-            opacity: wallpaper ? 1 : 0.9,
-        }}
-        >
-        <Topbar
-            onOpenSettings={() => open("ajustes")}
-            onOpenAccount={() => open("perfil")}
-            onOpenSections={() => open("secciones")}
-            onOpenLists={() => open("listas")}
-        />
+  return (
+    <div
+      id="app"
+      className={`theme-${theme}`}
+      style={{
+        backgroundImage: `url('${wallpaper}')`,
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+        opacity: wallpaper ? 1 : 0.9,
+      }}
+    >
+      <Topbar
+        onOpenSettings={() => open("ajustes")}
+        onOpenAccount={() => open("perfil")}
+        onOpenSections={() => open("secciones")}
+        onOpenLists={() => open("listas")}
+      />
 
-        <SettingsPanel
-            isOpen={openPanel === "ajustes"}
-            onClose={close}
-            onToggleTheme={() => setTheme(theme === "light" ? "dark" : "light")}
-            onChangeWallpaper={setWallpaper}
-        />
+      <SettingsPanel
+        isOpen={openPanel === "ajustes"}
+        onClose={close}
+        onToggleTheme={() => setTheme(theme === "light" ? "dark" : "light")}
+        onChangeWallpaper={setWallpaper}
+      />
 
-        <PanelPerfil isOpen={openPanel === "perfil"} onClose={close} />
-        <PanelSecciones isOpen={openPanel === "secciones"} onClose={close} />
-        <PanelListas isOpen={openPanel === "listas"} onClose={close} />
-        <EditTaskPanel isOpen={openPanel === "editarTarea"} onClose={close} />
+      <PanelPerfil isOpen={openPanel === "perfil"} onClose={close} />
+      <PanelSecciones isOpen={openPanel === "secciones"} onClose={close} />
+      <PanelListas isOpen={openPanel === "listas"} onClose={close} />
+      <EditTaskPanel isOpen={openPanel === "editarTarea"} onClose={close} />
 
-        <Sidebar />
-        <main className="main">
-            <Outlet />
-            <div className="main-content">
-            <TaskList onOpenPanel={open} />
-            </div>
-            <TaskForm />
-        </main>
+      <Sidebar />
+      <main className="main">
+        <Outlet />
+        <div className="main-content">
+          <TaskList onOpenPanel={open} />
         </div>
-    );
+        <TaskForm />
+      </main>
+    </div>
+  );
 };
 
 export default Index;

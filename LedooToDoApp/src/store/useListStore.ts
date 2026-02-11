@@ -5,24 +5,24 @@ import type { List } from "../types/List";
 
 type ListStore = {
   lists: List[];
-  addList: (name: string) => void;
+  addList: (name: string, theme?: string) => void;
   removeList: (id: string) => void;
   editList: (id: string, name: string) => void;
   updateList: (updatedList: List) => void;
   addTask: (listId: string, task: Task) => void;
   removeTask: (listId: string, taskId: string) => void;
-  editTask: (listId: string, taskId: string, updates: Partial<Task>) => void;
+  updateTask: (listId: string, taskId: string, updates: Partial<Task>) => void;
 };
 
 export const useListStore = create<ListStore>()(
   persist(
     (set) => ({
       lists: [],
-      addList: (name) =>
+      addList: (name, theme?) =>
         set((state) => ({
           lists: [
             ...state.lists,
-            { id: crypto.randomUUID(), name, tasks: [] },
+            { id: crypto.randomUUID(), name, theme, tasks: [] },
           ],
         })),
       removeList: (id) =>
@@ -61,7 +61,7 @@ export const useListStore = create<ListStore>()(
               : list
           ),
         })),
-      editTask: (listId, taskId, updates) =>
+      updateTask: (listId, taskId, updates) =>
         set((state) => ({
           lists: state.lists.map((list) =>
             list.id === listId
