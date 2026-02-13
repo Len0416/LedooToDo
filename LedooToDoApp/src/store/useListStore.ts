@@ -9,6 +9,10 @@ type ListStore = {
   removeList: (id: string) => void;
   editList: (id: string, name: string) => void;
   updateList: (updatedList: List) => void;
+
+  updateTheme: (id: string, theme: string) => void;
+  updateNotes: (id: string, notes: string) => void;
+
   addTask: (listId: string, task: Task) => void;
   removeTask: (listId: string, taskId: string) => void;
   updateTask: (listId: string, taskId: string, updates: Partial<Task>) => void;
@@ -72,6 +76,19 @@ export const useListStore = create<ListStore>()(
                   ),
                 }
               : list
+          ),
+        })),
+      updateTheme: (id, theme) =>
+        set((state) => ({
+          lists: state.lists.map((list) =>
+            list.id === id ? { ...list, theme } : list
+          ),
+        })),
+
+      updateNotes: (id, notes) =>
+        set((state) => ({
+          lists: state.lists.map((list) =>
+            list.id === id ? { ...list, notes } : list
           ),
         })),
     }),

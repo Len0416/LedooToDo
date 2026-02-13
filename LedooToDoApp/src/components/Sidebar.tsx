@@ -11,7 +11,11 @@ import { useState } from "react";
 
 const Sidebar: React.FC = () => {
   const sections = [
-    { title: "Hoy", icon: iconSection1, path: "/today", component: Today },
+    { title: "Hoy", 
+      icon: iconSection1, 
+      path: "/today", 
+      component: Today 
+    },
     {
       title: "Destacados",
       icon: iconSection2,
@@ -31,7 +35,7 @@ const Sidebar: React.FC = () => {
       component: Calendar,
     },
   ];
-  const { lists, addList, editList } = useListStore();
+  const { lists, addList, editList, updateNotes } = useListStore();
 
   // Estados
   const [listTitle, setListTitle] = useState("");
@@ -85,35 +89,31 @@ const Sidebar: React.FC = () => {
                   onChange={(e) => setListTitle(e.target.value)}
                   required
                 />
-                <div className="actionsList">
-                  <button className="save-btn" onClick={handleSaveList}>
-                    Guardar
-                  </button>
-                  <button
-                    className="cancel-btn"
-                    onClick={() => setEditingListId(null)}
-                  >
-                    Cancelar
-                  </button>
+                <input
+                  className="input-field"
+                  placeholder="Notas de la lista"
+                  value={item.notes || ""}
+                  onChange={(e) => updateNotes(item.id, e.target.value)}
+                />
+                <div className='actionsList'>
+                  <button className="save-btn" onClick={handleSaveList}>Guardar</button>
+                  <button className="cancel-btn" onClick={() => setEditingListId(null)}>Cancelar</button>
                 </div>
               </li>
             ) : (
-              <li
-                key={item.id}
-                className="list"
+              <li 
+                key={item.id} 
+                className="list" 
                 onClick={() => {
                   setEditingListId(item.id);
                   setListId(item.id);
                   setListTitle(item.name);
                 }}
               >
-                <Link to={`/listas/${item.name.toLowerCase()}`}>
-                  {item.name}
-                </Link>
+                <Link to={`/listas/${item.name.toLowerCase()}`}>{item.name}</Link>
               </li>
-            ),
+            )
           )}
-
           {/* Crear nueva lista */}
           <li className="list-item">
             <input

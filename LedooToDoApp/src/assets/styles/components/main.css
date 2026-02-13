@@ -9,7 +9,7 @@
     background-color: rgba(36, 35, 35, 0.1); /* capa oscura semitransparente */
     background-blend-mode: multiply;
     border-radius: var(--radius);
-    overflow: visible;
+    overflow-y: auto;
     position: relative;
 }
 
