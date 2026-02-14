@@ -8,9 +8,9 @@
 }
 
 .tag.important {
-    background-color: var(--warning);
+    background-color: var(--important);
 }
 
 .tag.completed {
-    background-color: var(--success);
+    background-color: var(--complete);
 }

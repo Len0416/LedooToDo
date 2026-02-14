@@ -27,22 +27,24 @@
 }
 
 .task-options {
+  width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: start;
+  align-items: start;
+  justify-content: space-between;
   flex-direction: row;
   gap: 8px;
-  flex: 1 1 auto;
 }
 
 .task-form {
   position: fixed;
   bottom: 10px;
   width: 60vw;
+  max-width: 70%;
   padding: 12px;
   background: var(--surface-2);
   border-radius: 12px;
   display: flex;
+  flex-direction: column;
   gap: 8px;
   align-items: center;
   z-index: 3;

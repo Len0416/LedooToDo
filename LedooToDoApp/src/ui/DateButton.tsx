@@ -1,6 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 import CustomDatePicker from "./CustomDatePicker";
 
+import DateIcon from "../assets/images/icons/BxCalendar.svg";
+
 type DateButtonProps = {
     value?: string;
     onChange: (date: string) => void;
@@ -35,9 +37,11 @@ const DateButton: React.FC<DateButtonProps> = ({ value, onChange }) => {
         <div className="date-button-wrapper" style={{ position: "relative" }}>
         <button
             type="button"
-            className="date-button"
+            className="btn"
             onClick={() => setIsOpen(!isOpen)}
-            ref={buttonRef}>{value ? value : "Seleccionar fecha"}
+            ref={buttonRef}>
+                <img src={DateIcon} alt="Icono de fecha" className="icon"/>
+                {value ? value : "Fecha"}
         </button>
         {isOpen && (
             <div

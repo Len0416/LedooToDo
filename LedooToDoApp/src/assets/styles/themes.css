@@ -1,0 +1,38 @@
+/* themes.css
+Variables de tema y filtros para recolorear SVGs externos mediante CSS filter.
+Recomendación: los SVG deben ser monocromos (negro #000) para mejores resultados.
+*/
+
+/* Colores base de los temas (hex proporcionados) */
+:root {
+  --orangeTheme: #FF9664;
+  --blueTheme:   #3BD2D9;
+  --greenTheme:  #34D399;
+  --redTheme:    #FF2121;
+  --yellowTheme: #FBBF24;
+}
+
+/* color inicial visible para iconos en fondo oscuro (#F2F2F3) */
+:root {
+  --icon-filter-default: brightness(0) saturate(100%) invert(100%) sepia(2%) saturate(2361%) hue-rotate(180deg) brightness(92%) contrast(107%);
+}
+
+/* Presets de filtro (aproximaciones afinadas para los hex anteriores) */
+:root {
+  --icon-filter-none:   grayscale(1) brightness(0) contrast(1);
+  --icon-filter-orange: brightness(0) saturate(100%) invert(73%) sepia(18%) saturate(1537%) hue-rotate(342deg) brightness(106%) contrast(103%);
+  --icon-filter-blue:   brightness(0) saturate(100%) invert(46%) sepia(22%) saturate(400%) hue-rotate(150deg) brightness(100%) contrast(95%);
+  --icon-filter-green:  brightness(0) saturate(100%) invert(54%) sepia(30%) saturate(420%) hue-rotate(95deg) brightness(95%) contrast(95%);
+  --icon-filter-red:    brightness(0) saturate(100%) invert(18%) sepia(92%) saturate(600%) hue-rotate(340deg) brightness(95%) contrast(95%);
+  --icon-filter-yellow: brightness(0) saturate(100%) invert(78%) sepia(36%) saturate(600%) hue-rotate(10deg) brightness(105%) contrast(100%);
+}
+
+
+/* Opcional: clases utilitarias para aplicar tema globalmente vía body[data-theme="..."] */
+body[data-theme="orange"] { --theme-accent: var(--orangeTheme); }
+body[data-theme="blue"]   { --theme-accent: var(--blueTheme); }
+body[data-theme="green"]  { --theme-accent: var(--greenTheme); }
+body[data-theme="red"]    { --theme-accent: var(--redTheme); }
+body[data-theme="yellow"] { --theme-accent: var(--yellowTheme); }
+
+/* Si usas body[data-theme], puedes usar --theme-accent en otros estilos */

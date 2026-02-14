@@ -62,10 +62,12 @@
 
 .nav-item img {
     aspect-ratio: 1;
+    fill: var(--surface-2);
 }
 
 .divider {
     height: 1px;
+    width: 100%;
     background: var(--border);
 }
 

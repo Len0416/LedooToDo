@@ -3,6 +3,9 @@ import type { Task } from "../../types/Task";
 import { useTaskStore } from "../../store/useTaskStore";
 import DateButton from "../../ui/DateButton";
 
+import MarkedIcon from "../../assets/images/icons/TablerFlag.svg";
+import ListIcon from "../../assets/images/icons/BxCategory.svg";
+
 const TaskForm: React.FC = () => {
   const { addTask } = useTaskStore();
   const [title, setTitle] = useState("");
@@ -21,7 +24,7 @@ const TaskForm: React.FC = () => {
       completed: false,
     };
 
-    console.log("📌 Nueva tarea enviada:", task); // 👈 log para ver el resultado final
+    console.log("📌 Nueva tarea enviada:", task);
     addTask(task);
 
     setTitle("");
@@ -44,26 +47,35 @@ const TaskForm: React.FC = () => {
         />
         <span className="input-underline"></span>
       </div>
+
+      <div className="divider" role="separator"></div>
+
       <div className="task-options">
-        {/* Selector de fecha con popup */}
-        <DateButton
-          value={date}
-          onChange={(newDateString) => {
-            console.log("✅ TaskForm recibe:", newDateString);
-            setDate(newDateString);
-          }}
-        />
-        {/* Botón de importancia */}
-        <button
-          type="button"
-          className={`important-btn ${important ? "marked" : ""}`}
-          onClick={() => setImportant(!important)}
-        >
-          {important ? "Desmarcar" : "Importante"}
-        </button>
+        <div>
+          <DateButton
+            value={date}
+            onChange={(newDateString) => {
+              console.log("✅ TaskForm recibe:", newDateString);
+              setDate(newDateString);
+            }}
+          />
+          {/* Botón de importancia */}
+          <button
+            type="button"
+            className={`btn ${important ? "marked" : ""}`}
+            onClick={() => setImportant(!important)}
+          >
+            <img src={MarkedIcon} alt="Icono de marcado" className="icon" />
+            Prioridad
+          </button>
+          <button type="button" className="btn">
+            <img src={ListIcon} alt="Icono de lista" className="icon" />
+            Listas
+          </button>
+        </div>
         {/* Botón de envío */}
-        <button className="btn" type="submit">
-          Agregar
+        <button className="add-btn" type="submit">
+          Guardar Tarea
         </button>
       </div>
     </form>

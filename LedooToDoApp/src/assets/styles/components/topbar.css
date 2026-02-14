@@ -2,7 +2,7 @@
 .topbar {
     grid-column: 1 / -1;
     min-height: 60px;
-    background: var(--surface);
+    background: var(--surface-2);
     border-bottom: 1px solid var(--border);
     display: flex;
     align-items: center;
@@ -14,7 +14,7 @@
 .logo {
     font-weight: 700;
     font-size: 1.2rem;
-    color: var(--icon);
+    color: var(--logo);
 }
 
 .optionsNav {

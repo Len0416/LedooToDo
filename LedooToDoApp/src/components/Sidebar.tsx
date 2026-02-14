@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 import { Today, Important, AllTasks, Calendar } from "./main/Main";
 import { useListStore } from "../store/useListStore";
 
-import iconSection1 from "../assets/images/icons/Sun.png";
-import iconSection2 from "../assets/images/icons/Star.png";
-import iconSection3 from "../assets/images/icons/CheckSquare.png";
-import iconSection4 from "../assets/images/icons/Calendar.png";
-import userIcon from "../assets/images/icons/User.png";
+import iconSection1 from "../assets/images/icons/TablerSun.svg";
+import iconSection2 from "../assets/images/icons/ImportantStar.svg";
+import iconSection3 from "../assets/images/icons/CheckCircle.svg";
+import iconSection4 from "../assets/images/icons/BxCalendar.svg";
+import userIcon from "../assets/images/icons/TablerUser.svg";
 import { useState } from "react";
 
 const Sidebar: React.FC = () => {
