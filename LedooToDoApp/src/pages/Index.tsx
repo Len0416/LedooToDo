@@ -1,9 +1,7 @@
 // src/pages/Index.tsx
-// Página principal de la aplicación Ledoo (ToDoApp)
-
 import { Outlet } from "react-router-dom";
+import { useEffect } from "react";
 
-// Importación de estilos globales y específicos de componentes
 import "../assets/styles/components/main.css";
 import "../assets/styles/components/panels.css";
 import "../assets/styles/components/settings.css";
@@ -12,35 +10,46 @@ import "../assets/styles/components/sidebar.css";
 import "../assets/styles/components/tasks.css";
 import "../assets/styles/global.css";
 
-// Importación de estilos UI
 import "../assets/styles/ui/buttons.css";
 import "../assets/styles/ui/tags.css";
 import "../assets/styles/ui/inputs.css";
 
-// Importación de componentes
 import Topbar from "../components/Topbar.tsx";
 import Sidebar from "../components/Sidebar.tsx";
 import TaskForm from "../components/tasks/TaskForm.tsx";
 import TaskList from "../components/tasks/TaskList.tsx";
 
-// Importación de paneles
 import PanelPerfil from "../components/panels/PanelPerfil.tsx";
 import PanelSecciones from "../components/panels/PanelSecciones.tsx";
 import SettingsPanel from "../components/panels/SettingsPanel.tsx";
 import PanelListas from "../components/panels/PanelListas.tsx";
 import EditTaskPanel from "../components/panels/EditTaskPanel.tsx";
 
-// Importación de hooks
 import { usePanelManager } from "../hooks/usePanelManager.ts";
-
-// Importación de store
 import { useSettingsStore } from "../store/useSettingsStore.ts";
 
-// Componente funcional Index
 const Index: React.FC = () => {
   const { openPanel, open, close } = usePanelManager();
   const { theme, wallpaper, setWallpaper, setTheme } = useSettingsStore();
-  console.log("Index openPanel:", openPanel);
+
+  // Restaurar tema guardado al montar
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("ledoo_theme");
+    if (savedTheme) {
+      setTheme(savedTheme);
+      document.body.setAttribute("data-theme", savedTheme);
+    } else {
+      document.body.setAttribute("data-theme", theme);
+    }
+  }, []);
+
+  // Aplicar tema al body y guardar en localStorage
+  useEffect(() => {
+    if (theme) {
+      document.body.setAttribute("data-theme", theme);
+      localStorage.setItem("ledoo_theme", theme);
+    }
+  }, [theme]);
 
   return (
     <div

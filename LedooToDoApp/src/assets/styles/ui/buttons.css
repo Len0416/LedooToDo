@@ -3,7 +3,7 @@ Estilos de botones y reglas para recolorear iconos (<img class="icon">) por tema
 Mantén el formato <img src={...} className="icon" /> en JSX.
 */
 
-/* Base de botones (copiado y adaptado) */
+/* Base de botones */
 .btn,
 .btn-outline,
 .btn-icon,
@@ -24,7 +24,7 @@ Mantén el formato <img src={...} className="icon" /> en JSX.
   text-align: center;
   border: none;
   color: var(--button-text);
-  transition: background 0.2s ease, color 0.2s ease;
+  transition: background 0.2s ease, color 0.2s ease, filter 0.2s ease;
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -37,7 +37,7 @@ Mantén el formato <img src={...} className="icon" /> en JSX.
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  transition: filter 0.12s ease, color 0.12s ease;
+  transition: filter 0.09s ease, color 0.12s ease;
 }
 
 /* Icon <img> (externo) */
@@ -45,16 +45,13 @@ Mantén el formato <img src={...} className="icon" /> en JSX.
   display: inline-block;
   vertical-align: middle;
   object-fit: contain;
-  transition: filter 0.18s ease, opacity 0.12s ease;
-  /* normaliza la imagen a negro antes de colorear */
-  filter: var(--icon-filter-default);
   flex-shrink: 0;
+  transition: filter 0.09s ease, opacity 0.12s ease;
+  /* color inicial claro (#F2F2F3) para visibilidad */
+  filter: var(--icon-filter-default);
 }
 
-/* Hover por defecto (si no se aplica tema específico) */
-.btn:hover { color: var(--primary); }
-
-/* Botones outline / icon / add / etc (mantén tus reglas existentes) */
+/* Botones outline / icon / add / etc */
 .btn-outline {
   background: transparent;
   border: 1px solid var(--border);
@@ -74,7 +71,6 @@ Mantén el formato <img src={...} className="icon" /> en JSX.
 .btn-icon:hover { background: var(--surface-2); }
 
 .add-btn { background-color: var(--primary); }
-.add-btn:hover { background: #d1860c; }
 
 .cancel-btn,
 .delete-btn {
@@ -108,33 +104,41 @@ Mantén el formato <img src={...} className="icon" /> en JSX.
 }
 .complete-btn.active:hover { background: var(--complete); color: var(--button-text); }
 
-/* Date button wrapper (mantener) */
+/* Date button wrapper */
 .date-button-wrapper { position: relative; display: inline-block; z-index: 5; }
 
-/* Theme-specific icon recolor (aplica la clase theme-* al botón) */
-/* Hover: aplica filtro del tema */
-.btn.theme-orange:hover .icon { filter: var(--icon-filter-orange); }
-.btn.theme-blue:hover   .icon { filter: var(--icon-filter-blue); }
-.btn.theme-green:hover  .icon { filter: var(--icon-filter-green); }
-.btn.theme-red:hover    .icon { filter: var(--icon-filter-red); }
-.btn.theme-yellow:hover .icon { filter: var(--icon-filter-yellow); }
+/* Theme-specific: aplica filtro al botón entero (texto + icono) */
+.btn.theme-orange:hover,
+.btn.theme-orange.marked,
+body[data-theme="orangeTheme"] .btn:hover,
+body[data-theme="orangeTheme"] .btn.marked {
+  filter: var(--icon-filter-orange);
+}
 
-/* Marked/active state: aplica color cuando el botón tiene .marked */
-.btn.theme-orange.marked .icon { filter: var(--icon-filter-orange); }
-.btn.theme-blue.marked   .icon { filter: var(--icon-filter-blue); }
-.btn.theme-green.marked  .icon { filter: var(--icon-filter-green); }
-.btn.theme-red.marked    .icon { filter: var(--icon-filter-red); }
-.btn.theme-yellow.marked .icon { filter: var(--icon-filter-yellow); }
+.btn.theme-blue:hover,
+.btn.theme-blue.marked,
+body[data-theme="blueTheme"] .btn:hover,
+body[data-theme="blueTheme"] .btn.marked {
+  filter: var(--icon-filter-blue);
+}
 
-/* Global theme via body[data-theme] (opcional) */
-body[data-theme="orange"] .btn:hover .icon { filter: var(--icon-filter-orange); }
-body[data-theme="blue"]   .btn:hover .icon { filter: var(--icon-filter-blue); }
-body[data-theme="green"]  .btn:hover .icon { filter: var(--icon-filter-green); }
-body[data-theme="red"]    .btn:hover .icon { filter: var(--icon-filter-red); }
-body[data-theme="yellow"] .btn:hover .icon { filter: var(--icon-filter-yellow); }
+.btn.theme-green:hover,
+.btn.theme-green.marked,
+body[data-theme="greenTheme"] .btn:hover,
+body[data-theme="greenTheme"] .btn.marked {
+  filter: var(--icon-filter-green);
+}
 
-body[data-theme="orange"] .btn.marked .icon { filter: var(--icon-filter-orange); }
-body[data-theme="blue"]   .btn.marked .icon { filter: var(--icon-filter-blue); }
-body[data-theme="green"]  .btn.marked .icon { filter: var(--icon-filter-green); }
-body[data-theme="red"]    .btn.marked .icon { filter: var(--icon-filter-red); }
-body[data-theme="yellow"] .btn.marked .icon { filter: var(--icon-filter-yellow); }
+.btn.theme-red:hover,
+.btn.theme-red.marked,
+body[data-theme="redTheme"] .btn:hover,
+body[data-theme="redTheme"] .btn.marked {
+  filter: var(--icon-filter-red);
+}
+
+.btn.theme-yellow:hover,
+.btn.theme-yellow.marked,
+body[data-theme="yellowTheme"] .btn:hover,
+body[data-theme="yellowTheme"] .btn.marked {
+  filter: var(--icon-filter-yellow);
+}

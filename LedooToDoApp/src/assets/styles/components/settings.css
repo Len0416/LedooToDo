@@ -13,6 +13,7 @@
     gap: 16px;
     z-index: 4;
     opacity: 0;
+    overflow-y: auto;
     transform: translateY(100%); /* oculto hacia la derecha */
     transition: transform 0.3s ease, opacity 0.3s ease;
 }
@@ -63,14 +64,14 @@
     overflow: hidden;
     cursor: pointer;
     border: 1px solid var(--border);
-    transition: transform 0.2s ease, border-color 0.2s ease;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .wallpaper-card:hover {
     transform: scale(1.05);
     border-color: var(--primary);
+    box-shadow: 0 0 0 2px var(--primary);
 }
-
 .wallpaper-card img {
     width: 100%;
     height: 60px;
@@ -79,3 +80,39 @@
     border-radius: 6px;
 }
 
+.themes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+/* base de los botones de tema */
+.theme-btn {
+    aspect-ratio: 1;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    padding: 0;
+    background: transparent;
+}
+
+/* hover y activo */
+.theme-btn:hover {
+    transform: scale(1.05);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px var(--primary);
+}
+
+.theme-btn.active {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px var(--primary);
+}
+
+/* colores de fondo por tema */
+.theme-btn.redTheme    { background: var(--redTheme); }
+.theme-btn.orangeTheme { background: var(--orangeTheme); }
+.theme-btn.yellowTheme { background: var(--yellowTheme); }
+.theme-btn.greenTheme  { background: var(--greenTheme); }
+.theme-btn.blueTheme   { background: var(--blueTheme); }
+.theme-btn.purpleTheme { background: #C084FC; /* ejemplo */ }

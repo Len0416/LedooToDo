@@ -3,6 +3,52 @@ Variables de tema y filtros para recolorear SVGs externos mediante CSS filter.
 Recomendación: los SVG deben ser monocromos (negro #000) para mejores resultados.
 */
 
+/* Tema naranja */
+body[data-theme="orangeTheme"] {
+  --edit: var(--orangeTheme);
+  --primary: var(--orangeTheme);
+  --important: var(--orangeTheme);
+  --complete: var(--orangeTheme);
+  --remove: var(--orangeTheme);
+  /* puedes redefinir más variables si quieres que cambien */
+}
+
+/* Tema azul */
+body[data-theme="blueTheme"] {
+  --edit: var(--blueTheme);
+  --primary: var(--blueTheme);
+  --important: var(--blueTheme);
+  --complete: var(--blueTheme);
+  --remove: var(--blueTheme);
+}
+
+/* Tema verde */
+body[data-theme="greenTheme"] {
+  --edit: var(--greenTheme);
+  --primary: var(--greenTheme);
+  --important: var(--greenTheme);
+  --complete: var(--greenTheme);
+  --remove: var(--greenTheme);
+}
+
+/* Tema rojo */
+body[data-theme="redTheme"] {
+  --edit: var(--redTheme);
+  --primary: var(--redTheme);
+  --important: var(--redTheme);
+  --complete: var(--redTheme);
+  --remove: var(--redTheme);
+}
+
+/* Tema amarillo */
+body[data-theme="yellowTheme"] {
+  --edit: var(--yellowTheme);
+  --primary: var(--yellowTheme);
+  --important: var(--yellowTheme);
+  --complete: var(--yellowTheme);
+  --remove: var(--yellowTheme);
+}
+
 /* Colores base de los temas (hex proporcionados) */
 :root {
   --orangeTheme: #FF9664;
@@ -20,10 +66,10 @@ Recomendación: los SVG deben ser monocromos (negro #000) para mejores resultado
 /* Presets de filtro (aproximaciones afinadas para los hex anteriores) */
 :root {
   --icon-filter-none:   grayscale(1) brightness(0) contrast(1);
-  --icon-filter-orange: brightness(0) saturate(100%) invert(73%) sepia(18%) saturate(1537%) hue-rotate(342deg) brightness(106%) contrast(103%);
-  --icon-filter-blue:   brightness(0) saturate(100%) invert(46%) sepia(22%) saturate(400%) hue-rotate(150deg) brightness(100%) contrast(95%);
-  --icon-filter-green:  brightness(0) saturate(100%) invert(54%) sepia(30%) saturate(420%) hue-rotate(95deg) brightness(95%) contrast(95%);
-  --icon-filter-red:    brightness(0) saturate(100%) invert(18%) sepia(92%) saturate(600%) hue-rotate(340deg) brightness(95%) contrast(95%);
+  --icon-filter-orange: brightness(0) saturate(100%) invert(59%) sepia(67%) saturate(446%) hue-rotate(329deg) brightness(103%) contrast(101%);
+  --icon-filter-blue:   brightness(0) saturate(100%) invert(71%) sepia(97%) saturate(376%) hue-rotate(135deg) brightness(91%) contrast(86%);
+  --icon-filter-green:  brightness(0) saturate(100%) invert(73%) sepia(53%) saturate(584%) hue-rotate(100deg) brightness(90%) contrast(84%);
+  --icon-filter-red:    brightness(0) saturate(100%) invert(29%) sepia(73%) saturate(4800%) hue-rotate(347deg) brightness(98%) contrast(111%);
   --icon-filter-yellow: brightness(0) saturate(100%) invert(78%) sepia(36%) saturate(600%) hue-rotate(10deg) brightness(105%) contrast(100%);
 }
 
