@@ -51,7 +51,7 @@ const TaskForm: React.FC = () => {
       <div className="divider" role="separator"></div>
 
       <div className="task-options">
-        <div>
+        <div className="options-buttons">
           <DateButton
             value={date}
             onChange={(newDateString) => {

@@ -5,9 +5,9 @@ import type { List } from "../types/List";
 
 type ListStore = {
   lists: List[];
-  addList: (name: string, theme?: string) => void;
+  addList: (name: string, theme?: string, notes?: string) => void;
   removeList: (id: string) => void;
-  editList: (id: string, name: string) => void;
+  editList: (id: string, name: string, notes?: string) => void;
   updateList: (updatedList: List) => void;
 
   updateTheme: (id: string, theme: string) => void;
@@ -22,21 +22,21 @@ export const useListStore = create<ListStore>()(
   persist(
     (set) => ({
       lists: [],
-      addList: (name, theme?) =>
+      addList: (name, theme?, notes?) =>
         set((state) => ({
           lists: [
             ...state.lists,
-            { id: crypto.randomUUID(), name, theme, tasks: [] },
+            { id: crypto.randomUUID(), name, notes: notes || "", theme, tasks: [] },
           ],
         })),
       removeList: (id) =>
         set((state) => ({
           lists: state.lists.filter((list) => list.id !== id),
         })),
-      editList: (id, name) =>
+      editList: (id: string, name: string, notes?: string) =>
         set((state) => ({
           lists: state.lists.map((list) =>
-            list.id === id ? { ...list, name } : list
+            list.id === id ? { ...list, name, notes: notes || "" } : list
           ),
         })),
       updateList: (updatedList: List) =>

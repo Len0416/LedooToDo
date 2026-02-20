@@ -13,6 +13,7 @@ import "../assets/styles/global.css";
 import "../assets/styles/ui/buttons.css";
 import "../assets/styles/ui/tags.css";
 import "../assets/styles/ui/inputs.css";
+import "../assets/styles/ui/modal.css";
 
 import Topbar from "../components/Topbar.tsx";
 import Sidebar from "../components/Sidebar.tsx";

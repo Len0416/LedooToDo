@@ -4,6 +4,6 @@ export type List = {
   id: string;
   name: string;
   tasks: Task[];
+  notes: string; 
   theme?: string;
-  notes?: string; 
 }
