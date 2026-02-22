@@ -10,7 +10,7 @@ body[data-theme="orangeTheme"] {
   --important: var(--orangeTheme);
   --complete: var(--orangeTheme);
   --remove: var(--orangeTheme);
-  /* puedes redefinir más variables si quieres que cambien */
+  --icon-filter-primary: var(--icon-filter-orange);
 }
 
 /* Tema azul */
@@ -20,6 +20,7 @@ body[data-theme="blueTheme"] {
   --important: var(--blueTheme);
   --complete: var(--blueTheme);
   --remove: var(--blueTheme);
+  --icon-filter-primary: var(--icon-filter-blue);
 }
 
 /* Tema verde */
@@ -29,6 +30,7 @@ body[data-theme="greenTheme"] {
   --important: var(--greenTheme);
   --complete: var(--greenTheme);
   --remove: var(--greenTheme);
+  --icon-filter-primary: var(--icon-filter-green);
 }
 
 /* Tema rojo */
@@ -38,6 +40,7 @@ body[data-theme="redTheme"] {
   --important: var(--redTheme);
   --complete: var(--redTheme);
   --remove: var(--redTheme);
+  --icon-filter-primary: var(--icon-filter-red);
 }
 
 /* Tema amarillo */
@@ -47,7 +50,9 @@ body[data-theme="yellowTheme"] {
   --important: var(--yellowTheme);
   --complete: var(--yellowTheme);
   --remove: var(--yellowTheme);
+  --icon-filter-primary: var(--icon-filter-yellow);
 }
+
 
 /* Colores base de los temas (hex proporcionados) */
 :root {
@@ -72,7 +77,6 @@ body[data-theme="yellowTheme"] {
   --icon-filter-red:    brightness(0) saturate(100%) invert(29%) sepia(73%) saturate(4800%) hue-rotate(347deg) brightness(98%) contrast(111%);
   --icon-filter-yellow: brightness(0) saturate(100%) invert(78%) sepia(36%) saturate(600%) hue-rotate(10deg) brightness(105%) contrast(100%);
 }
-
 
 /* Opcional: clases utilitarias para aplicar tema globalmente vía body[data-theme="..."] */
 body[data-theme="orange"] { --theme-accent: var(--orangeTheme); }

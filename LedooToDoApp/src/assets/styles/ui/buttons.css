@@ -13,21 +13,21 @@ Mantén el formato <img src={...} className="icon" /> en JSX.
 .complete-btn,
 .delete-btn,
 .add-btn,
-.save-btn {
+.save-btn,
+.list-btn,
+.date-btn {
   font: inherit;
   font-weight: bold;
   cursor: pointer;
-  height: 35px;
-  width: max-content;
-  padding: 6px 12px;
-  border-radius: 6px;
+  padding: 8px 14px;
+  border-radius: 8px;
   text-align: center;
   border: none;
   color: var(--button-text);
   transition: background 0.2s ease, color 0.2s ease, filter 0.2s ease;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
 }
 
 /* Primary button */
@@ -47,8 +47,7 @@ Mantén el formato <img src={...} className="icon" /> en JSX.
   object-fit: contain;
   flex-shrink: 0;
   transition: filter 0.09s ease, opacity 0.12s ease;
-  /* color inicial claro (#F2F2F3) para visibilidad */
-  filter: var(--icon-filter-default);
+  filter: var(--icon-filter-default); /* color inicial claro (#F2F2F3) */
 }
 
 /* Botones outline / icon / add / etc */
@@ -61,8 +60,7 @@ Mantén el formato <img src={...} className="icon" /> en JSX.
 .btn-icon {
   width: 32px;
   height: 32px;
-  display: grid;
-  place-items: center;
+  text-align: center;
   background: var(--surface);
   border: 1px solid var(--border);
   color: var(--text);
@@ -107,6 +105,36 @@ Mantén el formato <img src={...} className="icon" /> en JSX.
 /* Date button wrapper */
 .date-button-wrapper { position: relative; display: inline-block; z-index: 5; }
 
+/* Botón de listas */
+.list-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text);
+}
+.list-btn:hover {
+  background: var(--surface-2);
+  color: var(--primary);
+}
+.list-btn.active {
+  background: var(--surface-2);
+  border: 1px solid var(--primary);
+  color: var(--primary);
+}
+.list-btn.active .icon {
+  filter: var(--icon-filter-primary);
+}
+
+/* Botón de fecha */
+.date-btn {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+.date-btn:hover {
+  background: var(--surface);
+  color: var(--primary);
+}
+
 /* Theme-specific: aplica filtro al botón entero (texto + icono) */
 .btn.theme-orange:hover,
 .btn.theme-orange.marked,
@@ -141,4 +169,19 @@ body[data-theme="redTheme"] .btn.marked {
 body[data-theme="yellowTheme"] .btn:hover,
 body[data-theme="yellowTheme"] .btn.marked {
   filter: var(--icon-filter-yellow);
+}
+
+/* Simplificación con variable común */
+.btn:hover,
+.btn.marked,
+.list-btn:hover,
+.list-btn.active {
+  color: var(--primary);
+}
+
+.btn:hover .icon,
+.btn.marked .icon,
+.list-btn:hover .icon,
+.list-btn.active .icon {
+  filter: var(--icon-filter-primary);
 }

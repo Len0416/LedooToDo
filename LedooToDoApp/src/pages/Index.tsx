@@ -33,24 +33,35 @@ const Index: React.FC = () => {
   const { openPanel, open, close } = usePanelManager();
   const { theme, wallpaper, setWallpaper, setTheme } = useSettingsStore();
 
-  // Restaurar tema guardado al montar
   useEffect(() => {
     const savedTheme = localStorage.getItem("ledoo_theme");
+    const savedWallpaper = localStorage.getItem("ledoo_wallpaper");
+
     if (savedTheme) {
       setTheme(savedTheme);
       document.body.setAttribute("data-theme", savedTheme);
     } else {
       document.body.setAttribute("data-theme", theme);
     }
+
+    if (savedWallpaper) {
+      setWallpaper(savedWallpaper);
+      document.body.setAttribute("data-wallpaper", savedWallpaper);
+    } else {
+      document.body.removeAttribute("data-wallpaper");
+    }
   }, []);
 
-  // Aplicar tema al body y guardar en localStorage
   useEffect(() => {
     if (theme) {
       document.body.setAttribute("data-theme", theme);
       localStorage.setItem("ledoo_theme", theme);
     }
-  }, [theme]);
+    if (wallpaper) {
+      document.body.setAttribute("data-wallpaper", wallpaper);
+      localStorage.setItem("ledoo_wallpaper", wallpaper);
+    }
+  }, [theme, wallpaper]);
 
   return (
     <div

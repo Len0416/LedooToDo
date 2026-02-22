@@ -145,7 +145,8 @@
 
     .btn,
     .btn-outline,
-    .btn-icon {
+    .btn-icon,
+    .list-btn {
         font-size: 0.6rem;
         padding: 6px 8px;
         border-radius: 10px;

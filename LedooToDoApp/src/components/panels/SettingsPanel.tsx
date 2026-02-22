@@ -21,7 +21,6 @@ type SettingsPanelProps = {
 const SettingsPanel: React.FC<SettingsPanelProps> = ({
     isOpen,
     onClose,
-    onToggleTheme,
     onChangeWallpaper,
     }) => {
     const { theme, setTheme } = useSettingsStore();
@@ -36,10 +35,6 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
         <div className="settings-header">
             <h3>Ajustes</h3>
             <button className="btn-icon close-settings" onClick={onClose}>✖</button>
-        </div>
-
-        <div className="section-actions">
-            <button className="btn-outline" onClick={onToggleTheme}>Claro/Oscuro</button>
         </div>
 
         <h2>Fondos</h2>

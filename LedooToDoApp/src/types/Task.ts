@@ -5,4 +5,5 @@ export type Task = {
   important?: boolean;
   completed?: boolean;
   notes?: string;
+  list?: string;
 };

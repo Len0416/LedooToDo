@@ -2,6 +2,8 @@ import { useState } from "react";
 import type { Task } from "../../types/Task";
 import { useTaskStore } from "../../store/useTaskStore";
 import DateButton from "../../ui/DateButton";
+import ListButton from "../../ui/ListButton";
+import ListPages from "../../ui/ListsPages";
 
 import MarkedIcon from "../../assets/images/icons/TablerFlag.svg";
 import ListIcon from "../../assets/images/icons/BxCategory.svg";
@@ -11,6 +13,8 @@ const TaskForm: React.FC = () => {
   const [title, setTitle] = useState("");
   const [date, setDate] = useState<string | undefined>(undefined);
   const [important, setImportant] = useState(false);
+  const [selectedList, setSelectedList] = useState<string | null>(null);
+  const [showLists, setShowLists] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -22,14 +26,17 @@ const TaskForm: React.FC = () => {
       date,
       important,
       completed: false,
+      list: selectedList ?? undefined, // 👈 aquí se guarda la lista
     };
 
     console.log("📌 Nueva tarea enviada:", task);
     addTask(task);
 
+    // Reset
     setTitle("");
     setDate(undefined);
     setImportant(false);
+    setSelectedList(null);
   };
 
   return (
@@ -52,14 +59,13 @@ const TaskForm: React.FC = () => {
 
       <div className="task-options">
         <div className="options-buttons">
+          {/* Fecha */}
           <DateButton
             value={date}
-            onChange={(newDateString) => {
-              console.log("✅ TaskForm recibe:", newDateString);
-              setDate(newDateString);
-            }}
+            onChange={(newDateString) => setDate(newDateString)}
           />
-          {/* Botón de importancia */}
+
+          {/* Prioridad */}
           <button
             type="button"
             className={`btn ${important ? "marked" : ""}`}
@@ -68,16 +74,35 @@ const TaskForm: React.FC = () => {
             <img src={MarkedIcon} alt="Icono de marcado" className="icon" />
             Prioridad
           </button>
-          <button type="button" className="btn">
-            <img src={ListIcon} alt="Icono de lista" className="icon" />
-            Listas
-          </button>
+
+          {/* Lista */}
+          <ListButton
+            title={selectedList ?? "Listas"}
+            icon={ListIcon}
+            active={!!selectedList}
+            onClick={() => setShowLists(true)}
+          />
         </div>
-        {/* Botón de envío */}
+
+        {/* Guardar */}
         <button className="add-btn" type="submit">
           Guardar Tarea
         </button>
       </div>
+
+      {/* Modal de selección de listas */}
+      {showLists && (
+        <div className="list-pages-overlay">
+          <ListPages
+            listIcon={ListIcon}
+            onClose={() => setShowLists(false)}
+            onSelect={(list) => {
+              setSelectedList(list); // 👈 aquí se guarda la lista seleccionada
+              setShowLists(false);
+            }}
+          />
+        </div>
+      )}
     </form>
   );
 };

@@ -81,6 +81,7 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onOpenPanel }) => {
             {task.completed && (
               <span className="tag completed">Completada</span>
             )}
+            {task.list && <span className="tag list">{task.list}</span>}
           </div>
 
           <div className="task-actions">

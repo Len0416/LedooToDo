@@ -39,8 +39,8 @@ const Sidebar: React.FC = () => {
       <nav className="nav-sections">
         {sections.map((section, index) => (
           <Link key={index} to={section.path} className="nav-item">
-            <img src={section.icon} alt={section.title} />
-            <p>{section.title}</p>
+            <img src={section.icon} alt={section.title} className="icon"/>
+            <h3>{section.title}</h3>
           </Link>
         ))}
       </nav>
