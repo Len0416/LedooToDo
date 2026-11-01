@@ -8,11 +8,20 @@ import ListPages from "../../ui/ListsPages";
 import MarkedIcon from "../../assets/images/icons/TablerFlag.svg";
 import ListIcon from "../../assets/images/icons/BxCategory.svg";
 
+import {
+  TextField,
+  Button,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  Stack,
+} from "@mui/material";
+
 const TaskForm: React.FC = () => {
   const { addTask } = useTaskStore();
   const [title, setTitle] = useState("");
   const [date, setDate] = useState<string | undefined>(undefined);
-  const [important, setImportant] = useState(false);
+  const [priority, setPriority] = useState(false);
   const [selectedList, setSelectedList] = useState<string | null>(null);
   const [showLists, setShowLists] = useState(false);
 
@@ -20,61 +29,86 @@ const TaskForm: React.FC = () => {
     e.preventDefault();
     if (!title.trim()) return;
 
-    const task: Task = {
+    const newTask: Task = {
       id: crypto.randomUUID(),
       title,
-      date,
-      important,
+      priority,
       completed: false,
-      list: selectedList ?? undefined, // 👈 aquí se guarda la lista
+      date: date,
+      list: selectedList || undefined,
     };
 
-    console.log("📌 Nueva tarea enviada:", task);
-    addTask(task);
+    addTask(newTask);
+    console.log("Tarea creada:", newTask);
 
     // Reset
     setTitle("");
     setDate(undefined);
-    setImportant(false);
+    setPriority(false);
+    console.log("Prioridad actual:", priority)
     setSelectedList(null);
   };
 
   return (
     <form className="task-form" onSubmit={handleSubmit}>
       {/* Campo de texto */}
-      <div className="input-group">
-        <input
-          id="task-title"
-          type="text"
-          className="input-field"
-          placeholder="Nueva tarea…"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          required
-        />
-        <span className="input-underline"></span>
-      </div>
+      <TextField
+        id="task-title"
+        placeholder="¿Qué necesitas hacer hoy?"
+        variant="standard"
+        fullWidth
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+        required
+        sx={{
+          "& .MuiInputBase-root": {
+            borderRadius: "10px",
+            px: 2,
+            py: 1,
+            color: "var(--text)",
+          },
+          "& input::placeholder": {
+            color: "var(--muted)",
+            opacity: 1,
+          },
+        }}
+      />
 
-      <div className="divider" role="separator"></div>
-
-      <div className="task-options">
-        <div className="options-buttons">
+      {/* Barra de opciones */}
+      <Stack
+        direction="row"
+        spacing={2}
+        justifyContent="space-between"
+        alignItems="center"
+        width="100%"
+        className="task-options"
+        sx={{
+          flexDirection: {
+            xs: "column",
+            sm: "row",
+          }
+        }}
+      >
+        <Stack direction="row" spacing={2} className="options-buttons">
           {/* Fecha */}
-          <DateButton
-            value={date}
-            onChange={(newDateString) => setDate(newDateString)}
-          />
+          <DateButton value={date} onChange={(newDateString) => setDate(newDateString)} />
 
           {/* Prioridad */}
-          <button
-            type="button"
-            className={`btn ${important ? "marked" : ""}`}
-            onClick={() => setImportant(!important)}
+          <Button
+            variant={priority ? "contained" : "text"}
+            onClick={() => setPriority(!priority)}
+            startIcon={<img src={MarkedIcon} alt="Icono de marcado" className="icon" />}
+            sx={{
+              bgcolor: "#11121600",
+              color: "var(--text)",
+              "&:hover": {
+                bgcolor: "#0E0E0Fdd",
+                color: "var(--primary)",
+              },
+            }}
           >
-            <img src={MarkedIcon} alt="Icono de marcado" className="icon" />
             Prioridad
-          </button>
-
+          </Button>
           {/* Lista */}
           <ListButton
             title={selectedList ?? "Listas"}
@@ -82,27 +116,42 @@ const TaskForm: React.FC = () => {
             active={!!selectedList}
             onClick={() => setShowLists(true)}
           />
-        </div>
-
+        </Stack>
         {/* Guardar */}
-        <button className="add-btn" type="submit">
+        <Button
+          variant="contained"
+          color="primary"
+          type="submit"
+          sx={{
+            color: "#000000",
+            background: "var(--primary)",
+            borderRadius: "12px",
+            px: 3,
+            fontWeight: 800,
+            "&:hover": {
+              boxShadow: "0 4px 12px rgba(0,0,0,0.3)",
+              opacity: 0.9,
+            },
+          }}
+        >
           Guardar Tarea
-        </button>
-      </div>
+        </Button>
+      </Stack>
 
       {/* Modal de selección de listas */}
-      {showLists && (
-        <div className="list-pages-overlay">
+      <Dialog open={showLists} onClose={() => setShowLists(false)}>
+        <DialogTitle>Seleccionar lista</DialogTitle>
+        <DialogContent>
           <ListPages
             listIcon={ListIcon}
             onClose={() => setShowLists(false)}
             onSelect={(list) => {
-              setSelectedList(list); // 👈 aquí se guarda la lista seleccionada
+              setSelectedList(list);
               setShowLists(false);
             }}
           />
-        </div>
-      )}
+        </DialogContent>
+      </Dialog>
     </form>
   );
 };

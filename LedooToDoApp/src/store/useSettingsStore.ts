@@ -9,7 +9,7 @@ type SettingsState = {
 };
 
 export const useSettingsStore = create<SettingsState>((set) => ({
-    theme: "undefined",
+    theme: "light",
     wallpaper: "",
     setTheme: (theme) => set({ theme }),
     setWallpaper: (url) => set({ wallpaper: url }),

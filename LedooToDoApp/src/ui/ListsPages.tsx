@@ -1,5 +1,6 @@
 import ListButton from "./ListButton";
 import "../assets/styles/ui/listpages.css";
+import { useListStore } from "../store/useListStore";
 
 type ListItemsProps = {
   listIcon: string;
@@ -8,7 +9,8 @@ type ListItemsProps = {
 };
 
 const ListPages: React.FC<ListItemsProps> = ({ listIcon, onClose, onSelect }) => {
-  const lists = ["lista1", "lista2", "lista3"];
+  const lists = useListStore((state) => state.lists);
+
 
   return (
     <div className="list-pages-overlay">
@@ -16,13 +18,13 @@ const ListPages: React.FC<ListItemsProps> = ({ listIcon, onClose, onSelect }) =>
         <button type="button" className="close-btn" onClick={onClose}>
           ✕
         </button>
-        {lists.map((title, index) => (
+        {lists.map((list) => (
           <ListButton
-            key={index}
-            title={title}
+            key={list.id}
+            title={list.name}
             icon={listIcon}
             active={false}
-            onClick={() => onSelect(title)}
+            onClick={() => onSelect(list.name)}
           />
         ))}
       </div>

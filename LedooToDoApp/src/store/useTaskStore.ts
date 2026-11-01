@@ -8,7 +8,7 @@ type TaskStore = {
     addTask: (task: Task) => void;
     deleteTask: (id: string) => void;
     toggleCompleted: (id: string) => void;
-    toggleImportant: (id: string) => void;
+    togglePriority: (id: string) => void;
     startEditing: (task: Task) => void;
     setEditingTask: (task: Task) => void;
     updateTask: (updatedTask: Task) => void;
@@ -30,13 +30,13 @@ export const useTaskStore = create<TaskStore>()(
                     task.id === id ? { ...task, completed: !task.completed } : task
                 )
             })),
-        toggleImportant: (id: string) =>
+        togglePriority: (id: string) =>
             set((state) => ({
                 tasks: state.tasks.map(task =>
-                task.id === id ? { ...task, important: !task.important } : task
+                task.id === id ? { ...task, priority: !task.priority } : task
                 ),
                 editingTask: state.editingTask && state.editingTask.id === id
-                ? { ...state.editingTask, important: !state.editingTask.important }
+                ? { ...state.editingTask, priority: !state.editingTask.priority }
                 : state.editingTask
             })),
 

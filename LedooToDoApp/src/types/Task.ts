@@ -2,7 +2,7 @@ export type Task = {
   id: string;
   title: string;
   date?: string;
-  important?: boolean;
+  priority?: boolean;
   completed?: boolean;
   notes?: string;
   list?: string;

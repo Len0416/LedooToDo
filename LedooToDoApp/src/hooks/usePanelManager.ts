@@ -1,17 +1,21 @@
-import { useState } from "react";
+// src/hooks/usePanelManager.ts
+import { useCallback } from "react";
+import { usePanelStore } from "../store/usePanelStore.ts";
 
 export const usePanelManager = () => {
-    const [openPanel, setOpenPanel] = useState<string | null>(null);
+    const openPanel = usePanelStore((s) => s.openPanel);
+    const open = usePanelStore((s) => s.open);
+    const close = usePanelStore((s) => s.close);
+    const toggle = usePanelStore((s) => s.toggle);
 
-    const open = (panel: string) => setOpenPanel(panel);
-    const close = () => setOpenPanel(null);
-    const toggle = (panel: string) =>
-        setOpenPanel((prev) => (prev === panel ? null : panel));
+    /* wrapper opcional para añadir logs o lógica adicional */
+    const openWithLog = useCallback(
+        (panelName: string) => {
+        console.log("[usePanelManager] open called with", panelName);
+        open(panelName);
+        },
+        [open]
+    );
 
-    return {
-        openPanel,
-        open,
-        close,
-        toggle,
-    };
+    return { openPanel, open: openWithLog, close, toggle };
 };

@@ -8,7 +8,7 @@ type EditTaskPanelProps = {
 };
 
 const EditTaskPanel: React.FC<EditTaskPanelProps> = ({ isOpen, onClose }) => {
-    const { editingTask, updateTask, cancelEditing, toggleImportant } = useTaskStore();
+    const { editingTask, updateTask, cancelEditing, togglePriority } = useTaskStore();
 
     const [title, setTitle] = useState(editingTask?.title ?? "");
     const [date, setDate] = useState<string | undefined>(editingTask?.date ?? undefined);
@@ -51,10 +51,10 @@ const EditTaskPanel: React.FC<EditTaskPanelProps> = ({ isOpen, onClose }) => {
             <div className="panel-actions">
             <div className="checkboxesTask">
                 <button
-                className={`important-btn ${editingTask.important ? "important" : ""}`}
-                onClick={() => toggleImportant(editingTask.id)}
+                className={`important-btn ${editingTask.priority ? "important" : ""}`}
+                onClick={() => togglePriority(editingTask.id)}
                 >
-                {editingTask.important ? "Quitar importancia" : "Marcar importante"}
+                {editingTask.priority ? "Quitar importancia" : "Marcar importante"}
                 </button>
             </div>
             <div className="actionsTask">

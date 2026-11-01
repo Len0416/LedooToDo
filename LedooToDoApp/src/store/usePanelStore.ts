@@ -1,3 +1,4 @@
+// src/store/usePanelStore.ts
 import { create } from "zustand";
 
 type PanelState = {
@@ -11,6 +12,5 @@ export const usePanelStore = create<PanelState>((set) => ({
     openPanel: null,
     open: (panel) => set({ openPanel: panel }),
     close: () => set({ openPanel: null }),
-    toggle: (panel) =>
-        set((state) => ({ openPanel: state.openPanel === panel ? null : panel })),
+    toggle: (panel) => set((state) => ({ openPanel: state.openPanel === panel ? null : panel })),
 }));
